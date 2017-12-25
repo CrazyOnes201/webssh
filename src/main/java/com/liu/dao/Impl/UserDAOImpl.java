@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional(readOnly = false)
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
     //增加用户
     public void saveUser(User user){

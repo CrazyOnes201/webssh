@@ -5,14 +5,13 @@
 
 <struts>
     <package name="user" extends="struts-default">
-        <!-- class="RegistAction"与applicationContext.xml中的id对应 -->
         <action name="regist" class="registAction">
             <result name="success">/successregister.jsp</result>
             <result name="input">/index.jsp</result>
         </action>
 
         <action name="login" class="loginAction">
-            <result name="success">/successlogin.jsp</result>
+            <result name="success">/mainPage.jsp</result>
             <result name="input">/register.jsp</result>
         </action>
 
