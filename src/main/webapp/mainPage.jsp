@@ -17,5 +17,6 @@
     <c:when test="${user.admin eq 1}">管理员</c:when>
     <c:when test="${user.admin eq 0 }">用户</c:when>
 </c:choose>
+<a href="personalCenter.jsp">个人中心</a>
 </body>
 </html>

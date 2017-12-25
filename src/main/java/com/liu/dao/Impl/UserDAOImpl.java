@@ -2,23 +2,36 @@ package com.liu.dao.Impl;
 
 import com.liu.dao.UserDAO;
 import com.liu.entity.User;
-import org.hibernate.FlushMode;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
+
+    /**
+     * 获取 currentSession
+     *
+     * @return Session
+     */
+    Session getSession() {
+        return this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+    }
     //增加用户
     public void saveUser(User user){
-        Session session=this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+        Session session= getSession();
         session.setFlushMode(FlushMode.AUTO);
         Transaction tran=session.beginTransaction();
-
-        session.save(user);
-        tran.commit();
+        try {
+            session.save(user);
+            tran.commit();
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     //查询验证用户是否存在
@@ -37,4 +50,24 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
         }
         return firstuser;
     }
+
+    /**
+     * 更新用户信息
+     *
+     * @param user 更新后的用户数据
+     */
+    public void updateUser(User user) {
+        this.getHibernateTemplate().update(user);
+
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param user 必须为完整用户数据
+     */
+    public void deleteUser(User user) {
+        this.getHibernateTemplate().delete(user);
+    }
+
 }
