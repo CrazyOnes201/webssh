@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/context
@@ -11,10 +12,14 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+  <!-- 自动注入 -->
+  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+  <!-- 自动扫描实体bean -->
+  <context:component-scan base-package="com.liu.action, com.liu.service" />
 
   <!-- 数据源配置（与数据库连接的四要素的配置） -->
   <!-- 可以按住ctrl+ 点击bean的class里面看源码，可以找到property标签的name属性，并且有对应的get和set方法  -->
-
   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
     <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
     <property name="jdbcUrl" value="jdbc:mysql://123.207.187.114:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
@@ -83,27 +88,11 @@
   <!--</aop:config>-->
 
 
-  <bean id="UserDAOImpl" class="com.liu.dao.Impl.UserDAOImpl" scope="singleton">
+  <bean id="userDao" class="com.liu.dao.Impl.UserDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory"/>
     </property>
   </bean>
 
-  <bean id="UserServiceImpl" class="com.liu.service.Impl.UserServiceImpl">
-    <property name="userdao" ref="UserDAOImpl"></property>
-  </bean>
 
-  <bean id="RegistAction" class="com.liu.action.RegistAction" scope="prototype">
-    <property name="userservice" ref="UserServiceImpl"></property>
-  </bean>
-
-  <bean id="LoginAction" class="com.liu.action.LoginAction" scope="prototype">
-    <property name="userservice" ref="UserServiceImpl"></property>
-  </bean>
-
-  <bean id="SearchTicketAction" class="com.liu.action.SearchTicketAction" scope="prototype">
-    <property name="searchticketservice" ref="SearchTicketImpl"></property>
-  </bean>
-
-  <!-- 加载spring的xml文件（自己自定义的一些文件）,一定要记得来添加哦-->
 </beans>
