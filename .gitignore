@@ -1,0 +1,11 @@
+*.class
+.idea/
+target/
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/code/
+*.iml
+*.war
+*.ear
+*.log
+logs/
+temp/
