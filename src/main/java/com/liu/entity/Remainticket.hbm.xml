@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.liu.entity.Remainticket" table="remainticket" schema="tots">
+        <composite-id mapped="true" class="com.liu.entity.RemainticketPK">
+            <key-property name="trainId" column="trainId"/>
+            <key-property name="startStationId" column="startStationId"/>
+            <key-property name="endStationId" column="endStationId"/>
+            <key-property name="level" column="level"/>
+            <key-property name="date" column="date"/>
+        </composite-id>
+        <property name="ticket" column="ticket"/>
+    </class>
+</hibernate-mapping>
