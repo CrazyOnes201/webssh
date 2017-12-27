@@ -25,7 +25,6 @@
     <property name="jdbcUrl" value="jdbc:mysql://123.207.187.114:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
     <property name="user" value="root"></property>
     <property name="password" value="123456"></property>
-
   </bean>
 
 

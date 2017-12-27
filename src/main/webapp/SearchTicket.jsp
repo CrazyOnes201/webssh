@@ -14,7 +14,7 @@
 <body>
 <s:form action="SearchTicket" method="post">
     <table>
-        <tr><td>用户<input type="text" name="user.username"/></td></tr>
+        <tr><td>用户<input type="text" name="startStation"/></td></tr>
         <tr><td>密码<input type="password" name="user.password"/></td></tr>
         <tr><td><input type="submit" value="登录"/></td><td><input type="button" value="注册" onclick="jumpToRegist()"/></td></tr>
     </table>

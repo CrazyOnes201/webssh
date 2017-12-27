@@ -11,5 +11,7 @@
         </composite-id>
         <property name="startTime" column="startTime"/>
         <property name="endTime" column="endTime"/>
+        <property name="rank" column="rank"/>
+        <property name="miles" column="miles"/>
     </class>
 </hibernate-mapping>

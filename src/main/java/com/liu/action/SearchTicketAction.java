@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class SearchTicketAction extends ActionSupport {
     private User user;
     //注入Service,生成SET GET方法
+    private String startStation;
     private UserService userservice;
     public User getUser() {
         return user;
