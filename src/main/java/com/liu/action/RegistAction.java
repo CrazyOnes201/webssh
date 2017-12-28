@@ -1,7 +1,6 @@
 package com.liu.action;
 
 import com.liu.entity.User;
-import com.liu.entity.Users;
 import com.liu.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;

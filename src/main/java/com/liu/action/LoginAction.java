@@ -8,6 +8,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
+
 @Controller
 public class LoginAction extends ActionSupport {
     @Autowired
@@ -26,7 +28,7 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        trainService.testDao();
+        trainService.getTrainList("杭州","北京", new Date());
         User nowUser = userService.findUser(user);
         boolean flag = false;
         if(nowUser.getUsername() != null) {

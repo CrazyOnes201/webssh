@@ -35,6 +35,9 @@
       <list>
         <value>com.liu.entity.User</value>
         <value>com.liu.entity.Traininfo</value>
+        <value>com.liu.entity.Train</value>
+        <value>com.liu.entity.Remainticket</value>
+        <value>com.liu.entity.Usedticket</value>
       </list>
     </property>
     <!-- 配置hibernate的一些基本属性 -->
