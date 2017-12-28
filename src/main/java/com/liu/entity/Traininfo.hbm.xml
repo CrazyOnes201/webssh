@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.liu.entity.Traintime" table="traintime" schema="tots">
-        <composite-id mapped="true" class="com.liu.entity.TraintimePK">
+    <class name="com.liu.entity.Traininfo" table="traininfo" schema="tots">
+        <composite-id mapped="true" class="com.liu.entity.TraininfoPK">
             <key-property name="trainId" column="trainId"/>
             <key-property name="station" column="station"/>
         </composite-id>

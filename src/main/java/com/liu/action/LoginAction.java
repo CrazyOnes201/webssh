@@ -1,6 +1,7 @@
 package com.liu.action;
 
 import com.liu.entity.User;
+import com.liu.service.TrainService;
 import com.liu.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 public class LoginAction extends ActionSupport {
     @Autowired
     private UserService userService;
+    @Autowired
+    private TrainService trainService;
 
     private User user;
 
@@ -23,6 +26,7 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        trainService.testDao();
         User nowUser = userService.findUser(user);
         boolean flag = false;
         if(nowUser.getUsername() != null) {
