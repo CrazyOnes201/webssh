@@ -5,6 +5,6 @@ package com.liu.entity;
  * 只包含票类和对应张数
  */
 public class Ticket {
-    private int level;
+    private String level;
     private int num;
 }

@@ -8,5 +8,6 @@
         <id name="trainId" column="trainId"/>
         <property name="startStation" column="startStation"/>
         <property name="endStation" column="endStation"/>
+        <property name="seatType" column="seatType" />
     </class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 package com.liu.action;
 
+import com.liu.dao.TestDAO;
 import com.liu.entity.User;
 import com.liu.service.TrainService;
 import com.liu.service.UserService;
@@ -16,6 +17,8 @@ public class LoginAction extends ActionSupport {
     private UserService userService;
     @Autowired
     private TrainService trainService;
+    @Autowired
+    private TestDAO testDao;
 
     private User user;
 

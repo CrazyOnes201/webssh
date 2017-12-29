@@ -5,10 +5,11 @@
 <hibernate-mapping>
 
     <class name="com.liu.entity.Traininfo" table="traininfo" schema="tots">
-        <composite-id mapped="true" class="com.liu.entity.TraininfoPK">
-            <key-property name="trainId" column="trainId"/>
-            <key-property name="station" column="station"/>
-        </composite-id>
+        <id name="id" column="id" >
+            <generator class="uuid" />
+        </id>
+        <property name="trainId" column="trainId" />
+        <property name="station" column="station" />
         <property name="startTime" column="startTime"/>
         <property name="endTime" column="endTime"/>
         <property name="rank" column="rank"/>

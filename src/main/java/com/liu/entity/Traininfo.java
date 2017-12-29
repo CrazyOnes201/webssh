@@ -1,14 +1,17 @@
 package com.liu.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Time;
 
 /**
  * Created by Crazy Ones on 2017/12/28.
  */
 @Entity
-@IdClass(TraininfoPK.class)
-public class Traininfo {
+public class Traininfo implements Serializable {
+    private String id;
     private String trainId;
     private String station;
     private Time startTime;
@@ -17,6 +20,18 @@ public class Traininfo {
     private int miles;
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Basic
     @Column(name = "trainId")
     public String getTrainId() {
         return trainId;
@@ -26,7 +41,7 @@ public class Traininfo {
         this.trainId = trainId;
     }
 
-    @Id
+    @Basic
     @Column(name = "station")
     public String getStation() {
         return station;
@@ -77,18 +92,6 @@ public class Traininfo {
     }
 
     @Override
-    public String toString() {
-        return "Traininfo{" +
-                "trainId='" + trainId + '\'' +
-                ", station='" + station + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", rank=" + rank +
-                ", miles=" + miles +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -97,6 +100,7 @@ public class Traininfo {
 
         if (rank != traininfo.rank) return false;
         if (miles != traininfo.miles) return false;
+        if (id != null ? !id.equals(traininfo.id) : traininfo.id != null) return false;
         if (trainId != null ? !trainId.equals(traininfo.trainId) : traininfo.trainId != null) return false;
         if (station != null ? !station.equals(traininfo.station) : traininfo.station != null) return false;
         if (startTime != null ? !startTime.equals(traininfo.startTime) : traininfo.startTime != null) return false;
@@ -105,12 +109,26 @@ public class Traininfo {
 
     @Override
     public int hashCode() {
-        int result = trainId != null ? trainId.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (trainId != null ? trainId.hashCode() : 0);
         result = 31 * result + (station != null ? station.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + rank;
         result = 31 * result + miles;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Traininfo{" +
+                "id='" + id + '\'' +
+                ", trainId='" + trainId + '\'' +
+                ", station='" + station + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", rank=" + rank +
+                ", miles=" + miles +
+                '}';
     }
 }

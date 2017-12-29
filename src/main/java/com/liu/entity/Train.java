@@ -10,6 +10,7 @@ public class Train {
     private String trainId;
     private String startStation;
     private String endStation;
+    private String seatType;
 
     @Id
     @Column(name = "trainId")
@@ -41,6 +42,16 @@ public class Train {
         this.endStation = endStation;
     }
 
+    @Basic
+    @Column(name = "seatType")
+    public String getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(String seatType) {
+        this.seatType = seatType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,8 +62,7 @@ public class Train {
         if (trainId != null ? !trainId.equals(train.trainId) : train.trainId != null) return false;
         if (startStation != null ? !startStation.equals(train.startStation) : train.startStation != null) return false;
         if (endStation != null ? !endStation.equals(train.endStation) : train.endStation != null) return false;
-
-        return true;
+        return seatType != null ? seatType.equals(train.seatType) : train.seatType == null;
     }
 
     @Override
@@ -60,6 +70,7 @@ public class Train {
         int result = trainId != null ? trainId.hashCode() : 0;
         result = 31 * result + (startStation != null ? startStation.hashCode() : 0);
         result = 31 * result + (endStation != null ? endStation.hashCode() : 0);
+        result = 31 * result + (seatType != null ? seatType.hashCode() : 0);
         return result;
     }
 }
