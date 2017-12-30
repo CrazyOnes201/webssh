@@ -1,6 +1,6 @@
 package com.liu.action;
 
-import com.liu.dao.TestDAO;
+import com.liu.dao.TicketDAO;
 import com.liu.entity.User;
 import com.liu.service.TrainService;
 import com.liu.service.UserService;
@@ -15,10 +15,10 @@ import java.util.Date;
 public class LoginAction extends ActionSupport {
     @Autowired
     private UserService userService;
-    @Autowired
+    @Autowired // test
     private TrainService trainService;
-    @Autowired
-    private TestDAO testDao;
+    @Autowired // test
+    private TicketDAO ticketDao;
 
     private User user;
 
@@ -31,7 +31,10 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        /* 仅为测试而调用 */
         trainService.getTrainList("杭州","北京", new Date());
+        /* 仅为测试而调用 */
+        ticketDao.insertEveryDayTicket();
         User nowUser = userService.findUser(user);
         boolean flag = false;
         if(nowUser.getUsername() != null) {

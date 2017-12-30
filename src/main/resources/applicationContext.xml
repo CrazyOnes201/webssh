@@ -39,6 +39,7 @@
         <value>com.liu.entity.Remainticket</value>
         <value>com.liu.entity.Usedticket</value>
         <value>com.liu.entity.Testtable</value>
+        <value>com.liu.entity.TrainSeatType</value>
       </list>
     </property>
     <!-- 配置hibernate的一些基本属性 -->
@@ -90,19 +91,25 @@
   <!--</aop:config>-->
 
 
-  <bean id="userDao" class="com.liu.dao.Impl.UserDAOImpl" scope="prototype">
+  <bean id="userDao" class="com.liu.dao.Impl.UserDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory"/>
     </property>
   </bean>
 
-  <bean id="trainDao" class="com.liu.dao.Impl.TrainDAOImpl" scope="prototype">
+  <bean id="trainDao" class="com.liu.dao.Impl.TrainDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory" />
     </property>
   </bean>
 
-  <bean id="testDao" class="com.liu.dao.Impl.TestDAOImpl" scope="prototype">
+  <bean id="testDao" class="com.liu.dao.Impl.TestDAOImpl" scope="singleton">
+    <property name="sessionFactory">
+      <ref bean="sessionFactory" />
+    </property>
+  </bean>
+
+  <bean id="ticketDao" class="com.liu.dao.Impl.TicketDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory" />
     </property>

@@ -20,6 +20,13 @@ public class TrainServiceImpl implements TrainService {
     @Autowired
     TrainDAO trainDao;
 
+    /**
+     * 获取车次及对应车票数的实体  ##但为完成对对应车票数的添加##
+     * @param beStation 开始车站
+     * @param taStation 目的车站
+     * @param tarDate   查询日期
+     * @return 返回可用于显示的车次及对应车票实体
+     */
     public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate) {
         ArrayList<List<Traininfo>> infoList = trainDao.findTraininfoList(beStation, taStation);
         List<Traininfo> startTrain = infoList.get(0);

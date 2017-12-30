@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**
+ * 测试uuid专用DAO层
  * Created by Crazy Ones on 2017/12/29.
  */
 public class TestDAOImpl extends HibernateDaoSupport implements TestDAO {

@@ -5,13 +5,12 @@
 <hibernate-mapping>
 
     <class name="com.liu.entity.Remainticket" table="remainticket" schema="tots">
-        <composite-id mapped="true" class="com.liu.entity.RemainticketPK">
-            <key-property name="trainId" column="trainId"/>
-            <key-property name="startStationId" column="startStationId"/>
-            <key-property name="endStationId" column="endStationId"/>
-            <key-property name="level" column="level"/>
-            <key-property name="date" column="date"/>
-        </composite-id>
-        <property name="ticket" column="ticket"/>
+        <id name="id" column="id">
+            <generator class="uuid" />
+        </id>
+        <property name="level" column="level"/>
+        <property name="nowNum" column="nowNum" />
+        <property name="traininfoId" column="traininfoId" />
+        <property name="date" column="date" />
     </class>
 </hibernate-mapping>

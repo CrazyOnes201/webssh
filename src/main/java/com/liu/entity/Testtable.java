@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * 测试uuid专用实体类
  * Created by Crazy Ones on 2017/12/29.
  */
 @Entity
