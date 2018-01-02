@@ -27,7 +27,7 @@ public class TrainAndTicket {
         beginStation = startInfo.getStation();
         targetStation = targetInfo.getStation();
         beginTime = startInfo.getStartTime();
-        targetTime = startInfo.getStartTime();
+        targetTime = targetInfo.getStartTime();
         // 缺少对lastTime的计算
     }
 

@@ -1,6 +1,8 @@
 package com.liu.service.Impl;
 
+import com.liu.dao.TicketDAO;
 import com.liu.dao.TrainDAO;
+import com.liu.entity.Ticket;
 import com.liu.entity.Train;
 import com.liu.entity.TrainAndTicket;
 import com.liu.entity.Traininfo;
@@ -19,9 +21,11 @@ import java.util.List;
 public class TrainServiceImpl implements TrainService {
     @Autowired
     TrainDAO trainDao;
+    @Autowired
+    TicketDAO ticketDao;
 
     /**
-     * 获取车次及对应车票数的实体  ##但为完成对对应车票数的添加##
+     * 获取车次及对应车票数的
      * @param beStation 开始车站
      * @param taStation 目的车站
      * @param tarDate   查询日期
@@ -36,6 +40,9 @@ public class TrainServiceImpl implements TrainService {
         for(int i = 0; i < listLength; ++i) {
             TrainAndTicket elem = new TrainAndTicket(startTrain.get(i),
                     targetTrain.get(i));
+            ArrayList<Ticket> tList = ticketDao.searchTicketInfo(startTrain.get(i).getTrainId(), startTrain.get(i).getRank(),
+                    targetTrain.get(i).getRank());  //tarDate
+            elem.setTicketList(tList);
             resultList.add(elem);
         }
 

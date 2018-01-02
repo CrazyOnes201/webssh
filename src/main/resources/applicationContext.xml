@@ -40,6 +40,7 @@
         <value>com.liu.entity.Usedticket</value>
         <value>com.liu.entity.Testtable</value>
         <value>com.liu.entity.TrainSeatType</value>
+        <value>com.liu.entity.Tots_dict</value>
       </list>
     </property>
     <!-- 配置hibernate的一些基本属性 -->
@@ -110,6 +111,12 @@
   </bean>
 
   <bean id="ticketDao" class="com.liu.dao.Impl.TicketDAOImpl" scope="singleton">
+    <property name="sessionFactory">
+      <ref bean="sessionFactory" />
+    </property>
+  </bean>
+
+  <bean id="dictDao" class="com.liu.dao.Impl.DictDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory" />
     </property>
