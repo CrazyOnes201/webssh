@@ -1,33 +1,58 @@
 package com.liu.action;
 
-import com.liu.entity.User;
-import com.liu.service.UserService;
+import com.liu.entity.TrainAndTicket;
+import com.liu.service.TrainService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+@Controller
 public class SearchTicketAction extends ActionSupport {
-    private User user;
-    //注入Service,生成SET GET方法
-    private String startStation;
-    private UserService userservice;
-    public User getUser() {
-        return user;
+    @Autowired
+    private TrainService trainService;
+
+    private String beginStation;
+    private String targetStation;
+    private String targetDate;
+
+    public String getBeginStation() {
+        return beginStation;
     }
-    public void setUser(User user) {
-        this.user = user;
+
+    public void setBeginStation(String beginStation) {
+        this.beginStation = beginStation;
     }
-    public UserService getUserservice() {
-        return userservice;
+
+    public String getTargetStation() {
+        return targetStation;
     }
-    public void setUserservice(UserService userservice) {
-        this.userservice = userservice;
+
+    public void setTargetStation(String targetStation) {
+        this.targetStation = targetStation;
+    }
+
+    public String getTargetDate() {
+        return targetDate;
+    }
+
+    public void setTargetDate(String targetDate) {
+        this.targetDate = targetDate;
     }
 
     //execute方法
     @Override
     public String execute() throws Exception {
-        if(this.userservice.saveUser(this.user)){
+        ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
+                new Date());
+        ActionContext act = ActionContext.getContext();
+        if(true) {
+            act.put("tatList", tatList);
             return SUCCESS;
         }
-        return INPUT;
+        return LOGIN;
     }
 }

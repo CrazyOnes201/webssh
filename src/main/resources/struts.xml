@@ -11,13 +11,14 @@
         </action>
 
         <action name="login" class="loginAction">
-            <result name="success">/mainPage.jsp</result>
+            <!--<result name="success">/mainPage.jsp</result>-->
+            <result name="success">/SearchTicket.jsp</result>
             <result name="input">/register.jsp</result>
         </action>
 
-        <action name="searchticket" class="SearchTicketAction">
-            <result name="success">/successlogin.jsp</result>
-            <result name="input">/register.jsp</result>
+        <action name="searchticket" class="searchTicketAction">
+            <result name="success">/SearchTicket.jsp</result>
+            <result name="login">/register.jsp</result>
         </action>
 
     </package>
