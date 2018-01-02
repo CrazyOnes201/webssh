@@ -43,12 +43,12 @@ public class SearchTicketAction extends ActionSupport {
         this.targetDate = targetDate;
     }
 
-    //execute方法
     @Override
     public String execute() throws Exception {
         ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
                 new Date());
         ActionContext act = ActionContext.getContext();
+        /* 缺少检测用户是否登录 */
         if(true) {
             act.put("tatList", tatList);
             return SUCCESS;
