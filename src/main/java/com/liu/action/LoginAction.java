@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         /* 仅为测试而调用 */
-        trainService.getTrainList("杭州","北京", new Date());
+//        trainService.getTrainList("杭州","北京", new Date());
         /* 仅为测试而调用 */
 //        ticketDao.insertEveryDayTicket();
         User nowUser = userService.findUser(user);

@@ -18,5 +18,6 @@
     <c:when test="${user.admin eq 0 }">用户</c:when>
 </c:choose>
 <a href="personalCenter.jsp">个人中心</a>
+<a href="logout">注销</a>
 </body>
 </html>

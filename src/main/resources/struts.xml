@@ -21,5 +21,9 @@
             <result name="login">/register.jsp</result>
         </action>
 
+        <action name="logout" class="userAction" method="logOut">
+            <result name="success">/index.jsp</result>
+        </action>
+
     </package>
 </struts>
