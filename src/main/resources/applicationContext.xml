@@ -22,9 +22,9 @@
   <!-- 可以按住ctrl+ 点击bean的class里面看源码，可以找到property标签的name属性，并且有对应的get和set方法  -->
   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
     <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://123.207.187.114:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
     <property name="user" value="root"></property>
-    <property name="password" value="msm888zjc888"></property>
+    <property name="password" value="123456"></property>
   </bean>
 
 
