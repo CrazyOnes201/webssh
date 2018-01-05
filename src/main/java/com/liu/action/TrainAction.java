@@ -33,24 +33,32 @@ public class TrainAction extends ActionSupport{
 
     @Override
     public String execute() throws Exception{
-        System.out.println(operation_type+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println(train.getTrainId()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println(train.getStartStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println(train.getEndStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println(train.getSeatType()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        //TODO ALERT未实现
         if(operation_type.equals("a"))//增加
         {
             String result = trainService.addTrain(train);
-            System.out.println(result+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            return SUCCESS;
+            if(result.equals("success"))
+                return SUCCESS;
+            else
+                return ERROR;
 
         }
         else if(operation_type.equals("b"))//删除
         {
+            String result = trainService.deleteTrain(train);
+            if(result.equals("success"))
+                return SUCCESS;
+            else
+                return ERROR;
 
         }
         else if(operation_type.equals("c"))//修改
         {
+            String result = trainService.updateTrain(train);
+            if(result.equals("success"))
+                return SUCCESS;
+            else
+                return ERROR;
 
         }
         else if(operation_type.equals("d"))//查找
@@ -62,7 +70,13 @@ public class TrainAction extends ActionSupport{
             }
 
             else {//根据trainId获取车次
+                //TODO
                 trainService.findTrain(train.getTrainId());
+                String result = trainService.addTrain(train);
+                if(result.equals("success"))
+                    return SUCCESS;
+                else
+                    return ERROR;
             }
 
 

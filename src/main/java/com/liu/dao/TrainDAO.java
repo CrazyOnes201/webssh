@@ -11,4 +11,6 @@ public interface TrainDAO {
     public Train getTrainById(String trainId);
     public Train getAllTrain();
     public String addTrain(Train train);
+    public String deleteTrain(Train train);
+    public String updateTrain(Train train);
 }

@@ -91,41 +91,42 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
         }
         return "error";
     }
-//
-//    //增加用户
-//    public void saveUser(User user){
-//        Session session= getSession();
-//        session.setFlushMode(FlushMode.AUTO);
-//        Transaction tran=session.beginTransaction();
-//        try {
-//            session.save(user);
-//            tran.commit();
-//        } catch(HibernateException e) {
-//            e.printStackTrace();
-//            tran.rollback();
-//        } finally {
-//            session.close();
-//        }
-//    }
-//
-//    //查询验证用户是否存在
-//    public Train findTrain(Train train){
-//        Train firsttrain = new Train();
-//        //HQL查询语句
-//        String hql = "from User where user.username='"
-//                + user.getUsername() + "' and user.password= '"
-//                + user.getPassword() + "'";
-//        //将查询出的结果放到List
-//        List<User> userlist = (List<User>) this.getHibernateTemplate().find(hql);
-//        //判断是否有查询结果，换句话说就是判断用户是否存在
-//        if(userlist.size()>0){
-//            //取出查询结果的第一个值，理论上数据库是没有重复的用户信息
-//            firstuser = userlist.get(0);
-//        }
-//        return firstuser;
-//    }
+//删除车次
+    public String deleteTrain(Train train) {
+        Session session= getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran=session.beginTransaction();
+        try {
+            session.delete(train);
+            tran.commit();
+            return "success";
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        } finally {
+            session.close();
+        }
+        return "error";
 
+    }
+//更新车次
+    public String updateTrain(Train train) {
+        Session session= getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran=session.beginTransaction();
+        try {
+            session.update(train);
+            tran.commit();
+            return "success";
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        } finally {
+            session.close();
+        }
+        return "error";
 
+    }
 
 
 }

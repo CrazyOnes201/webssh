@@ -14,4 +14,8 @@ public interface TrainService {
     public Train findTrain(String trainId);
     public Train findAllTrain();
     public String addTrain(Train train);
+    public String deleteTrain(Train train);
+    public String updateTrain(Train train);
+
+
 }

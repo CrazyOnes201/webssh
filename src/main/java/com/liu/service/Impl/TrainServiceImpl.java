@@ -85,11 +85,19 @@ public class TrainServiceImpl implements TrainService {
         if(firsttrain==null) {
             return trainDao.addTrain(train);
         }
-        return "车次号不能相同";
+        return "error";
 
     }
 
- //   public User findUser(User user){
+    public String deleteTrain(Train train) {
+        return trainDao.deleteTrain(train);
+    }
+
+    public String updateTrain(Train train) {
+        return trainDao.updateTrain(train);
+    }
+
+    //   public User findUser(User user){
 //        return userDao.findUser(user);
 //    }
 

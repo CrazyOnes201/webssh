@@ -26,7 +26,7 @@
         </action>
 
         <action name="admintrain" class="trainAction">
-            <result name="success">/tots/index.jsp</result>
+            <result name="success">/form-line.jsp</result>
             <result name="error">/form-line1.jsp</result>
         </action>
 
