@@ -12,6 +12,7 @@ public class TrainAction extends ActionSupport{
 
     private String operation_type;//操作类型
     private Train train;
+    @Autowired
     private TrainService trainService;
 
     public Train getTrain() {
@@ -37,22 +38,22 @@ public class TrainAction extends ActionSupport{
         System.out.println(train.getStartStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         System.out.println(train.getEndStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         System.out.println(train.getSeatType()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        if(operation_type=="a")//增加
+        if(operation_type.equals("a"))//增加
         {
             String result = trainService.addTrain(train);
             System.out.println(result+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             return SUCCESS;
 
         }
-        else if(operation_type=="b")//删除
+        else if(operation_type.equals("b"))//删除
         {
 
         }
-        else if(operation_type=="c")//修改
+        else if(operation_type.equals("c"))//修改
         {
 
         }
-        else if(operation_type=="d")//查找
+        else if(operation_type.equals("d"))//查找
         {
             //如果为空，返回所有车次
             if(train.getTrainId()==null){

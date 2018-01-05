@@ -56,8 +56,10 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
     public Train getTrainById(String trainId) {
         String hql = "from Train where trainId='" + trainId + "'";
         List<Train> result = (List<Train>)this.getHibernateTemplate().find(hql);
-
-        return result.get(0);
+        if(result.size()>0) {
+            return result.get(0);
+        }
+        return null;
     }
     /**
      * 返回所有的数据库中对应的Train类实体
@@ -65,10 +67,12 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
      */
 //    public ArrayList<List<Traininfo>> findTraininfoList(String beStation, String enStation) {
     public Train getAllTrain(){
-        String hql = "from Train";
+        String hql = "from Train where trainId='" + "G53" + "'";
         List<Train> result = (List<Train>)this.getHibernateTemplate().find(hql);
-
-        return result.get(0);
+        if(result.size()>0) {
+            return result.get(0);
+        }
+        return null;
     }
 //添加车次
     public String addTrain(Train train){

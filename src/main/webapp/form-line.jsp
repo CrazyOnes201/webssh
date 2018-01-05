@@ -168,10 +168,10 @@
                                     <label for="user-phone" class="am-u-sm-3 am-form-label">座位类型 <span class="tpl-form-line-small-title">Type</span></label>
                                     <div class="am-u-sm-9">
                                         <select data-am-selected="{searchBox: 1}" name="train.seatType">
-<option value="a">A</option>
-<option value="b">B</option>
-<option value="c">C</option>
-<option value="c">D</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
 </select>
 </div>
 </div>     
@@ -179,7 +179,7 @@
 <div class="am-form-group">
     <label for="user-phone" class="am-u-sm-3 am-form-label">类型 <span class="tpl-form-line-small-title">Type</span></label>
     <div class="am-u-sm-9">
-        <select data-am-selected="{searchBox: 1}">
+        <select data-am-selected="{searchBox: 1}" name="operation_type">
 <option value="a">增加</option>
 <option value="b">删除</option>
 <option value="c">修改</option>
