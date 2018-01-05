@@ -138,7 +138,7 @@
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <s:form class="am-form tpl-form-line-form" method="POST">
+                            <s:form action="admintrain" class="am-form tpl-form-line-form" method="POST">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">车次号 <span class="tpl-form-line-small-title">TrainId</span></label>
                                     <div class="am-u-sm-9">
@@ -199,7 +199,7 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">保存</button>
+                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                                     </div>
                                 </div>
                             </s:form>

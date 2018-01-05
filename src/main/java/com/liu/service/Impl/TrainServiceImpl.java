@@ -77,6 +77,18 @@ public class TrainServiceImpl implements TrainService {
 
         return trainDao.getAllTrain();
     }
+
+    //添加车次
+    public String addTrain(Train train){
+        Train firsttrain = trainDao.getTrainById(train.getTrainId());
+
+        if(firsttrain==null) {
+            return trainDao.addTrain(train);
+        }
+        return "车次号不能相同";
+
+    }
+
  //   public User findUser(User user){
 //        return userDao.findUser(user);
 //    }

@@ -10,4 +10,5 @@ public interface TrainDAO {
     public ArrayList<List<Traininfo>> findTraininfoList(String beStation, String enStation);
     public Train getTrainById(String trainId);
     public Train getAllTrain();
+    public String addTrain(Train train);
 }

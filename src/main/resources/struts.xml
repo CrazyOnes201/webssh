@@ -25,5 +25,10 @@
             <result name="success">/tots/index.jsp</result>
         </action>
 
+        <action name="admintrain" class="TrainAction">
+            <result name="success">/tots/index.jsp</result>
+            <result name="error">/form-line1.jsp</result>
+        </action>
+
     </package>
 </struts>

@@ -32,8 +32,16 @@ public class TrainAction extends ActionSupport{
 
     @Override
     public String execute() throws Exception{
+        System.out.println(operation_type+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println(train.getTrainId()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println(train.getStartStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println(train.getEndStation()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println(train.getSeatType()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         if(operation_type=="a")//增加
         {
+            String result = trainService.addTrain(train);
+            System.out.println(result+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            return SUCCESS;
 
         }
         else if(operation_type=="b")//删除
@@ -47,9 +55,11 @@ public class TrainAction extends ActionSupport{
         else if(operation_type=="d")//查找
         {
             //如果为空，返回所有车次
-            if(train.getTrainId()==null)
+            if(train.getTrainId()==null){
                 //TODO 未返回
                 trainService.findAllTrain();
+            }
+
             else {//根据trainId获取车次
                 trainService.findTrain(train.getTrainId());
             }

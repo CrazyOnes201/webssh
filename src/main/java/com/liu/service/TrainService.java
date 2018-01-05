@@ -13,4 +13,5 @@ public interface TrainService {
     public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate);
     public Train findTrain(String trainId);
     public Train findAllTrain();
+    public String addTrain(Train train);
 }
