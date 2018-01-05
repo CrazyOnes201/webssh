@@ -22,9 +22,9 @@
   <!-- 可以按住ctrl+ 点击bean的class里面看源码，可以找到property标签的name属性，并且有对应的get和set方法  -->
   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
     <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-    <property name="jdbcUrl" value="jdbc:mysql://115.159.120.205:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/tots?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"></property>
     <property name="user" value="root"></property>
-    <property name="password" value="root2017"></property>
+    <property name="password" value="msm888zjc888"></property>
   </bean>
 
 
@@ -66,22 +66,22 @@
     </property>
   </bean>
 
-   <!--配置Hibernate事务管理器-->
+  <!--配置Hibernate事务管理器-->
   <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
     <property name="sessionFactory" ref="sessionFactory" />
   </bean>
 
 
   <!--<tx:advice id="txAdvice" transaction-manager="txManager">-->
-    <!--<tx:attributes>-->
-      <!--<tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED"/>-->
-      <!--<tx:method name="find*" read-only="false" propagation="NOT_SUPPORTED"/>-->
-      <!--<tx:method name="save*" propagation="REQUIRED"/>-->
-      <!--<tx:method name="insert*" propagation="REQUIRED"/>-->
-      <!--<tx:method name="update*" propagation="REQUIRED"/>-->
-      <!--<tx:method name="delete*" propagation="REQUIRED"/>-->
-      <!--<tx:method name="*" propagation="REQUIRED" />-->
-    <!--</tx:attributes>-->
+  <!--<tx:attributes>-->
+  <!--<tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED"/>-->
+  <!--<tx:method name="find*" read-only="false" propagation="NOT_SUPPORTED"/>-->
+  <!--<tx:method name="save*" propagation="REQUIRED"/>-->
+  <!--<tx:method name="insert*" propagation="REQUIRED"/>-->
+  <!--<tx:method name="update*" propagation="REQUIRED"/>-->
+  <!--<tx:method name="delete*" propagation="REQUIRED"/>-->
+  <!--<tx:method name="*" propagation="REQUIRED" />-->
+  <!--</tx:attributes>-->
   <!--</tx:advice>-->
 
   <!--<aop:config>-->

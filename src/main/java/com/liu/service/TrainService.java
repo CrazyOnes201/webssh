@@ -1,5 +1,6 @@
 package com.liu.service;
 
+import com.liu.entity.Train;
 import com.liu.entity.TrainAndTicket;
 
 import java.util.ArrayList;
@@ -10,4 +11,6 @@ import java.util.Date;
  */
 public interface TrainService {
     public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate);
+    public Train findTrain(String trainId);
+    public Train findAllTrain();
 }

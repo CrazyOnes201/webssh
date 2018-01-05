@@ -6,19 +6,23 @@
 <struts>
     <package name="user" extends="struts-default">
         <action name="regist" class="registAction">
-            <result name="success">/successregister.jsp</result>
-            <result name="input">/index.jsp</result>
+            <result name="success">/tots/successregister.jsp</result>
+            <result name="input">/tots/index.jsp</result>
         </action>
 
         <action name="login" class="loginAction">
             <!--<result name="success">/mainPage.jsp</result>-->
-            <result name="success">/SearchTicket.jsp</result>
-            <result name="input">/register.jsp</result>
+            <result name="success">/tots/SearchTicket.jsp</result>
+            <result name="input">/tots/register.jsp</result>
         </action>
 
         <action name="searchticket" class="searchTicketAction">
-            <result name="success">/SearchTicket.jsp</result>
-            <result name="login">/register.jsp</result>
+            <result name="success">/tots/SearchTicket.jsp</result>
+            <result name="login">/tots/register.jsp</result>
+        </action>
+
+        <action name="logout" class="userAction" method="logOut">
+            <result name="success">/tots/index.jsp</result>
         </action>
 
     </package>

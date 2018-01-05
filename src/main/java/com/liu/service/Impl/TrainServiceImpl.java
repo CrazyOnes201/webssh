@@ -67,4 +67,21 @@ public class TrainServiceImpl implements TrainService {
 
         return resultList;
     }
+
+    //查找
+    public Train findTrain(String trainId){
+
+        return trainDao.getTrainById(trainId);
+    }
+    public Train findAllTrain(){
+
+        return trainDao.getAllTrain();
+    }
+ //   public User findUser(User user){
+//        return userDao.findUser(user);
+//    }
+
+
+
+
 }

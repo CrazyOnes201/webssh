@@ -9,4 +9,5 @@ import java.util.List;
 public interface TrainDAO {
     public ArrayList<List<Traininfo>> findTraininfoList(String beStation, String enStation);
     public Train getTrainById(String trainId);
+    public Train getAllTrain();
 }

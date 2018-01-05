@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         /* 仅为测试而调用 */
-        trainService.getTrainList("杭州","北京", new Date());
+//        trainService.getTrainList("杭州","北京", new Date());
         /* 仅为测试而调用 */
 //        ticketDao.insertEveryDayTicket();
         User nowUser = userService.findUser(user);
@@ -43,6 +43,7 @@ public class LoginAction extends ActionSupport {
         if(flag){
             ActionContext act = ActionContext.getContext();
             act.getSession().put("user", nowUser);
+            if(nowUser.getAdmin()==1) return LOGIN;
             return SUCCESS;
         }else{
             return INPUT;

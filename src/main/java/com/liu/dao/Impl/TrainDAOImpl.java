@@ -53,4 +53,17 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
 
         return result.get(0);
     }
+    /**
+     * 返回所有的数据库中对应的Train类实体
+     * @return 返回全部Train类实体
+     */
+    public Train getAllTrain(){
+        String hql = "from Train";
+        List<Train> result = (List<Train>)this.getHibernateTemplate().find(hql);
+
+        return result.get(0);
+    }
+
+
+
 }
