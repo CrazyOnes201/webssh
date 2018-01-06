@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<link href="css/login-style.css" rel="stylesheet" type="text/css" />
+<link href="/tots/css/login-style.css" rel="stylesheet" type="text/css" />
 <title>Login</title>
 </head>
-<div class="top">
-  
-</div>
 
 <div class="main">
   <div class="denglu">
@@ -47,8 +44,8 @@
           <td colspan="2"><table width="224" border="0" cellspacing="0" cellpadding="0">
             <tr>
 			</br>
-              <td height="24"><a href="#none" class="mm" >忘记登录密码？</a></td>
-              <td align="right"><a href="/tots/register.jsp" class="zc" style="font-size:13px; color:#225592" >立即网上注册</a></td>
+              <td height="24"><a href="#none" class="mm" style="color: #e1e1e1">忘记登录密码？</a></td>
+              <td align="right"><a href="/tots/register.jsp" class="zc" style="font-size:13px; color:#e1e1e1" >立即网上注册</a></td>
             </tr>
             <br>
           </table></s:form></td>
@@ -58,7 +55,7 @@
   </div>
 </div>
 
-<div class="footer">Copyright &copy; 2017 xxx.com All Rights Reserved　版权所有 火车订票系统</div>
+
 
 </body>
 </html>

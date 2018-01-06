@@ -31,4 +31,15 @@ public class UserAction extends ActionSupport{
 
         return false;
     }
+
+    public String updateUser(User user){
+
+
+
+        return "error";
+    }
+
+
+
+
 }
