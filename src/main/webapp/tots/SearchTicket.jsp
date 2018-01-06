@@ -21,6 +21,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2 style="text-align:center;">车票查询</h2>
 <div class="search">
   <form id="form-msg" class="sui-form form-horizontal"  method="post" action="searchticket">
      <div id="navfirst">
@@ -28,12 +29,14 @@
             <li > <div class="control-group">
                      <label for="startpoint" class="control-label">起点：</label>
                      <div class="controls">
-                        <input type="text" id="startpoint"  name="beginStation" class="input-middle" />
+                        <input type="text" id="startpoint"  name="beginStation" class="input-middle"
+                               value="${requestScope.tatList[0].beginStation}"/>
                      </div></div></li>
             <li ><div class="control-group">
                      <label for="finishpoint" class="control-label">终点：</label>
                      <div class="controls">
-                        <input type="text" id="finishpoint"  name="targetStation" class="input-middle" />
+                        <input type="text" id="finishpoint"  name="targetStation" class="input-middle"
+                               value="${requestScope.tatList[0].targetStation}" />
                      </div></div></li>
             <li ><div class="control-group">
                      <label for="time" class="control-label">出发日期：</label>
@@ -58,26 +61,35 @@
 			      <th>终点</th>
 			      <th>出发时间</th>
 			      <th>到达时间</th>
-			      <th>商务座</th>
-			      <th>一等座</th>
-			      <th>二等座</th>
-			      <th>备注</th>
+			      <th>车票</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  <c:forEach items="${requestScope.tatList}" var="elemTrain">
-			    <tr>
-			      <td>${elemTrain.trainId}</td>
-			      <td>${elemTrain.beginStation}</td>
-			      <td>${elemTrain.targetStation}</td>
-			      <td>${elemTrain.beginTime}</td>
-			      <td>${elemTrain.targetTime}</td>
-			      <td>1</td>
-			      <td>2</td>
-			      <td>4</td>
-			      <td> </td>
-			    </tr>
-			  </c:forEach>
+              <c:if test="${! empty requestScope.isPostResponse}">
+              <c:choose>
+                  <c:when test="${empty requestScope.tatList}">
+                      <td colspan="6" style="text-align:center;">
+                          没有数据 试试<a href="advancedsearch.jsp">高级查询</a>
+                      </td>
+                  </c:when>
+                  <c:when test="${! empty requestScope.tatList}">
+                      <c:forEach items="${requestScope.tatList}" var="elemTrain">
+                        <tr>
+                          <td>${elemTrain.trainId}</td>
+                          <td>${elemTrain.beginStation}</td>
+                          <td>${elemTrain.targetStation}</td>
+                          <td>${elemTrain.beginTime}</td>
+                          <td>${elemTrain.targetTime}</td>
+                          <td>
+                              <c:forEach items="${elemTrain.ticketList}" var="elemTicket">
+                                  ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;
+                              </c:forEach>
+                          </td>
+                        </tr>
+                      </c:forEach>
+                  </c:when>
+              </c:choose>
+              </c:if>
 			  </tbody>
 			</table>
       </div>

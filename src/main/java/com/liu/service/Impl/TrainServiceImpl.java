@@ -29,10 +29,16 @@ public class TrainServiceImpl implements TrainService {
      * @param beStation 开始车站
      * @param taStation 目的车站
      * @param tarDate   查询日期
+     * @param flag 标志是否为高级查询
      * @return 返回可用于显示的车次及对应车票实体
      */
-    public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate) {
-        List<List<Traininfo>> infoList = trainDao.findTraininfoList(beStation, taStation);
+    public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate, int flag) {
+        List<List<Traininfo>> infoList = null;
+        if(flag == 0) {
+            infoList = trainDao.findTraininfoList(beStation, taStation);
+        } else {
+            infoList = trainDao.findTransferTrain(beStation, taStation);
+        }
         List<Traininfo> startTrain = infoList.get(0);
         List<Traininfo> targetTrain = infoList.get(1);
         ArrayList<TrainAndTicket> resultList = new ArrayList<TrainAndTicket>();
@@ -41,7 +47,7 @@ public class TrainServiceImpl implements TrainService {
             TrainAndTicket elem = new TrainAndTicket(startTrain.get(i),
                     targetTrain.get(i));
             ArrayList<Ticket> tList = ticketDao.searchTicketInfo(startTrain.get(i).getTrainId(), startTrain.get(i).getRank(),
-                    targetTrain.get(i).getRank());  //tarDate
+                    targetTrain.get(i).getRank());  //tarDate 还有隔天查询
             elem.setTicketList(tList);
             resultList.add(elem);
         }

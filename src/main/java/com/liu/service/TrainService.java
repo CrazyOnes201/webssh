@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Crazy Ones on 2017/12/28.
  */
 public interface TrainService {
-    public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate);
+    public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate, int flag);
     public Train findTrain(String trainId);
     public Train findAllTrain();
     public String addTrain(Train train);

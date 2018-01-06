@@ -14,10 +14,13 @@ import java.util.Date;
 public class SearchTicketAction extends ActionSupport {
     @Autowired
     private TrainService trainService;
+    @Autowired
+    private UserAction userAction;
 
     private String beginStation;
     private String targetStation;
     private String targetDate;
+    private String advancedFlag;
 
     public String getBeginStation() {
         return beginStation;
@@ -43,16 +46,41 @@ public class SearchTicketAction extends ActionSupport {
         this.targetDate = targetDate;
     }
 
+    public String getAdvancedFlag() {
+        return advancedFlag;
+    }
+
+    public void setAdvancedFlag(String advancedFlag) {
+        this.advancedFlag = advancedFlag;
+    }
+
     @Override
     public String execute() throws Exception {
         ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
-                new Date());
+                new Date(), 0);
         ActionContext act = ActionContext.getContext();
         /* 缺少检测用户是否登录 */
-        if(true) {
+        if(userAction.isLogin()) {
+            act.put("isPostResponse", "yes");
             act.put("tatList", tatList);
             return SUCCESS;
         }
+        return LOGIN;
+    }
+
+    public String advancedSearch() {
+        ArrayList<TrainAndTicket> adtatList = trainService.getTrainList(beginStation, targetStation,
+                new Date(), 1);
+        for(TrainAndTicket tat: adtatList) {
+            System.out.println(tat);
+        }
+        ActionContext act = ActionContext.getContext();
+        if(userAction.isLogin()) {
+            act.put("isPostResponse", "yes");
+            act.put("adtatList", adtatList);
+            return SUCCESS;
+        }
+
         return LOGIN;
     }
 }
