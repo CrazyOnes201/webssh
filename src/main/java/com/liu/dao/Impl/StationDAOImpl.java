@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.StationDAO {
     Session getSession() {
@@ -17,12 +18,20 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
 
     //添加车站
     public String addStation(ArrayList<Traininfo> list) {
+        int flag=0;
         Session session= getSession();
         session.setFlushMode(FlushMode.AUTO);
         Transaction tran=session.beginTransaction();
         try {
             for (Traininfo traininfo:list){
-                session.save(traininfo);
+                if(findStation(traininfo)==null)
+                    session.save(traininfo);
+                else
+                {
+                    tran.rollback();
+                    return "error";
+                }
+
             }
             tran.commit();
             return "success";
@@ -34,4 +43,26 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
         }
         return "error";
     }
+
+    //查找车站
+    public Traininfo findStation(Traininfo traininfo){
+        Traininfo traininfo1 =new Traininfo();
+        //HQL查询语句
+        String hql = "from Traininfo where trainId='"
+                + traininfo.getTrainId()+ "' and station= '"
+                + traininfo.getStation()+ "'";
+        //将查询出的结果放到List
+        List<Traininfo> trainlist = (List<Traininfo>) this.getHibernateTemplate().find(hql);
+        //判断是否有查询结果，换句话说就是判断用户是否存在
+        if(trainlist.size()>0){
+            //取出查询结果的第一个值，理论上数据库是没有重复的用户信息
+            traininfo1 = trainlist.get(0);
+            return traininfo1;
+        }
+        return null;
+
+    }
+
+
+
 }

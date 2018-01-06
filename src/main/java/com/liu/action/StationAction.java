@@ -219,7 +219,7 @@ public class StationAction extends ActionSupport {
                 }
             }
 
-            if (stationService.addStation(list).equals("sucess")) {
+            if (stationService.addStation(list).equals("success")) {
                 return SUCCESS;
             }
 
