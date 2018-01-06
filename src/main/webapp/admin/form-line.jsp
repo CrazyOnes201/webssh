@@ -1,4 +1,5 @@
-<!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 
 <head>
@@ -10,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body data-type="generalComponents">
@@ -24,7 +25,7 @@
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
-                <img src="img/logo.png" alt="">
+                <img src="/assets/img/logo.png" alt="">
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -32,7 +33,7 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">管理员</span><span class="tpl-header-list-user-ico"> <img src="img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">管理员</span><span class="tpl-header-list-user-ico"> <img src="/assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
                         <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
@@ -76,17 +77,17 @@
                         <!-- 打开状态 添加 display:block-->
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
-                                <a href="form-amazeui.html">
+                                <a href="form-amazeui.jsp">
                                     <i class="am-icon-angle-right"></i>
                                     <span>修改个人信息</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="form-line.html">
+                                <a href="/admin/form-line.jsp" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>管理车次</span>
                                 </a>
-                                <a href="form-line1.html" class="active">
+                                <a href="/admin/form-line1.jsp">
                                     <i class="am-icon-angle-right"></i>
                                     <span>管理车站</span>
                                 </a>
@@ -110,17 +111,17 @@
 
         <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title">
-                管理车站
+                管理车次
             </div>
             <ol class="am-breadcrumb">
                 <li><a href="#" class="am-icon-home">首页</a></li>
                 <li><a href="#">管理</a></li>
-                <li class="am-active">管理车站</li>
+                <li class="am-active">管理车次</li>
             </ol>
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 车站信息
+                        <span class="am-icon-code"></span> 车次信息
                     </div>
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-small input-inline">
@@ -137,79 +138,59 @@
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form">
+                            <s:form action="admintrain" class="am-form tpl-form-line-form" method="POST">
                                 <div class="am-form-group">
-                                    <label for="user-name" class="am-u-sm-3 am-form-label">车次号 <span class="tpl-form-line-small-title">Title</span></label>
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">车次号 <span class="tpl-form-line-small-title">TrainId</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入车次号">
+                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入车次号" name="train.trainId">
                                        
                                     </div>
                                 </div>
 
-                                <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">日期 <span class="tpl-form-line-small-title">Date</span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" class="am-form-field tpl-form-no-bg" placeholder="日期" data-am-datepicker="" readonly/>
-                    
-                                    </div>
-                                </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">起始时间 <span class="tpl-form-line-small-title">Star Time</span></label>
+                                    <label class="am-u-sm-3 am-form-label">出发站<span class="tpl-form-line-small-title" >Star station</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="time" /  placeholder="起始时间">
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">终点时间 <span class="tpl-form-line-small-title">End Time</span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="time" /  placeholder="终点时间">
-                    
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">耗时<span class="tpl-form-line-small-title">Time</span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" placeholder="耗时">
+                                        <input type="text" placeholder="出发站" name="train.startStation">
                                     </div>
                                 </div>
 
 
                                 <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">车票类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                    <label class="am-u-sm-3 am-form-label">终点站<span class="tpl-form-line-small-title" >Terminus</span></label>
                                     <div class="am-u-sm-9">
-                                        <select data-am-selected="{searchBox: 1}">
-<option value="a">二等座</option>
-<option value="b">一等座</option>
-<option value="c">商务座</option>
+                                        <input type="text" placeholder="终点站" name="train.endStation">
+                                    </div>
+                                </div>
+
+
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">座位类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                    <div class="am-u-sm-9">
+                                        <select data-am-selected="{searchBox: 1}" name="train.seatType">
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
 </select>
 </div>
 </div>     
 
-                                        <div class="am-form-group">
-                                                <label class="am-u-sm-3 am-form-label">车票价格<span class="tpl-form-line-small-title">Terminus</span></label>
-                                                     <div class="am-u-sm-9">
-                                                            <input type="text" placeholder="车票价格">
-                                        </div>
-                                </div>
+<div class="am-form-group">
+    <label for="user-phone" class="am-u-sm-3 am-form-label">类型 <span class="tpl-form-line-small-title">Type</span></label>
+    <div class="am-u-sm-9">
+        <select data-am-selected="{searchBox: 1}" name="operation_type">
+<option value="a">增加</option>
+<option value="b">删除</option>
+<option value="c">修改</option>
+<option value="d">查找</option>
+</select>
+</div>
+</div>     
 
 
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">出发站<span class="tpl-form-line-small-title">Star station</span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" placeholder="出发站">
-                                    </div>
-                                </div>
 
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">终点站<span class="tpl-form-line-small-title">Terminus</span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" placeholder="终点站">
-                                    </div>
-                                </div>
+                               
                              
                               
 
@@ -218,11 +199,15 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                                     </div>
                                 </div>
-                            </form>
+                            </s:form>
+                            <div class="am-form-group" style="height:100px">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -244,9 +229,9 @@
     </div>
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/amazeui.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="/assets/js/app.js"></script>
 </body>
 
 </html>

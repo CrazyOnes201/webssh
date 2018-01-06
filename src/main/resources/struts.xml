@@ -14,7 +14,7 @@
             <!--<result name="success">/mainPage.jsp</result>-->
             <result name="success">/tots/SearchTicket.jsp</result>
             <result name="input">/tots/register.jsp</result>
-            <result name="login">../form-amazeui.jsp</result>
+            <result name="login">/admin/form-amazeui.jsp</result>
         </action>
 
         <action name="searchticket" class="searchTicketAction">
