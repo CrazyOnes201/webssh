@@ -5,6 +5,8 @@ body {
 	padding: 0;
 	margin: 0;
 	color: #333;
+	background-size:100%;
+	background: url(../image/2.JPG) no-repeat;
 }
 
 a{
@@ -36,8 +38,7 @@ br {
 
 /* 登录主体 */
 .main {
-	background-size:100%;
-	background: url(../image/2.jpg) no-repeat;
+
 }
 .main .denglu {
 	width: 1280px;
@@ -57,8 +58,8 @@ br {
 	height: 328px;
 	position: absolute;
 	right: 180px;
-	top: 120px;
-	color: #999;
+	top: 300px;
+	color: #e1e1e1;
 }
 .main .denglu .dlk a.mm {
 	color: #000;
@@ -106,7 +107,7 @@ br {
 	height: 40px;
 	line-height: 40px;
 	cursor: pointer;
-	font-family: "΢���ź�";
+	font-family: "΢���ź�";
 	font-size: 16px;
 	color: #FFF;
 	padding: 0;

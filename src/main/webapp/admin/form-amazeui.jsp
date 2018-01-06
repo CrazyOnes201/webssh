@@ -35,12 +35,12 @@
                         <span class="tpl-header-list-user-nick">管理员</span><span class="tpl-header-list-user-ico"> <img src="/assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
-                        <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                        <li><a href="/admin/form-amazeui.jsp"><span class="am-icon-bell-o"></span> 资料</a></li>
                         <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                        <li><a href="/tots/login.jsp"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
-                <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+                <li><a href="/tots/login.jsp" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
             </ul>
         </div>
     </header>
@@ -97,7 +97,7 @@
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <a href="/tots/login.jsp" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
                             <span>登录</span>
 
@@ -116,8 +116,8 @@
                 个人信息
             </div>
             <ol class="am-breadcrumb">
-                <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">管理</a></li>
+                <li><a href="/tots/login.jsp" class="am-icon-home">首页</a></li>
+                <li><a href="/admin/form-line.jsp">管理</a></li>
                 <li class="am-active">个人信息</li>
             </ol>
             <div class="tpl-portlet-components">
@@ -141,7 +141,7 @@
 
 
                         <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal">
+                            <form class="am-form am-form-horizontal" name="">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">用户名 / User Name</label>
                                     <div class="am-u-sm-9">
