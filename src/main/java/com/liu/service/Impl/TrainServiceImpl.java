@@ -32,7 +32,7 @@ public class TrainServiceImpl implements TrainService {
      * @return 返回可用于显示的车次及对应车票实体
      */
     public ArrayList<TrainAndTicket> getTrainList(String beStation, String taStation, Date tarDate) {
-        ArrayList<List<Traininfo>> infoList = trainDao.findTraininfoList(beStation, taStation);
+        List<List<Traininfo>> infoList = trainDao.findTraininfoList(beStation, taStation);
         List<Traininfo> startTrain = infoList.get(0);
         List<Traininfo> targetTrain = infoList.get(1);
         ArrayList<TrainAndTicket> resultList = new ArrayList<TrainAndTicket>();
