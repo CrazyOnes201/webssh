@@ -136,11 +136,11 @@
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form">
+                            <form class="am-form tpl-form-line-form" action="adminstation">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">车次号 <span class="tpl-form-line-small-title">TrainId</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入车次号">
+                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入车次号" name="traininfo.trainId">
                                        
                                     </div>
                                 </div>
@@ -148,14 +148,15 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">站名<span class="tpl-form-line-small-title">Station Name</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" placeholder="站名">
+                                        <input type="text" placeholder="站名" name="stationlist">
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">发车时间 <span class="tpl-form-line-small-title">Star Time</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="time" /  placeholder="起始时间">
+
+                                        <input type="text" name="starttimelist">
                                         
                                     </div>
                                 </div>
@@ -163,7 +164,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">到站时间 <span class="tpl-form-line-small-title">End Time</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="time" /  placeholder="终点时间">
+                                        <input type="text" name="endtimelist">
                     
                                     </div>
                                 </div>
@@ -171,7 +172,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">距离<span class="tpl-form-line-small-title">Distance</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" placeholder="距离">
+                                        <input type="text" placeholder="距离" name="milelist">
                                     </div>
                                 </div>
   
@@ -180,7 +181,7 @@
                                 <div class="am-form-group">
                                 <label for="user-phone" class="am-u-sm-3 am-form-label">类型 <span class="tpl-form-line-small-title">Type</span></label>
                                         <div class="am-u-sm-9">
-                                            <select data-am-selected="{searchBox: 1}">
+                                            <select data-am-selected="{searchBox: 1}" name="operation_type">
                                             <option value="a">增加</option>
                                             <option value="b">删除</option>
                                             <option value="c">修改</option>
@@ -193,7 +194,7 @@
 
                                  <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">保存</button>
+                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                                     </div>
                                 </div>
                             </form>

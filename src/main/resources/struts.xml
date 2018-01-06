@@ -30,5 +30,9 @@
             <result name="error">/form-line1.jsp</result>
         </action>
 
+        <action name="adminstation" class="stationAction">
+            <result name="success">/form-line1.jsp</result>
+            <result name="error">/form-line.jsp</result>
+        </action>
     </package>
 </struts>

@@ -122,5 +122,10 @@
     </property>
   </bean>
 
+  <bean id="stationDao" class="com.liu.dao.Impl.StationDAOImpl" scope="singleton">
+    <property name="sessionFactory">
+      <ref bean="sessionFactory" />
+    </property>
+  </bean>
 
 </beans>
