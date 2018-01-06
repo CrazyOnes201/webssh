@@ -21,6 +21,12 @@ public class StationServiceImpl implements StationService {
             return "error";
 
     }
+    public String deleteStation(Traininfo traininfo){
+        if(stationDAO.deleteStation(traininfo).equals("success"))
+            return "success";
+        else
+            return "error";
+    }
 
 
 

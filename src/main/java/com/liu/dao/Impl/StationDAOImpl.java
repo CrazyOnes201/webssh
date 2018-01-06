@@ -18,7 +18,6 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
 
     //添加车站
     public String addStation(ArrayList<Traininfo> list) {
-        int flag=0;
         Session session= getSession();
         session.setFlushMode(FlushMode.AUTO);
         Transaction tran=session.beginTransaction();
@@ -52,6 +51,8 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
                 + traininfo.getTrainId()+ "' and station= '"
                 + traininfo.getStation()+ "'";
         //将查询出的结果放到List
+        System.out.println(traininfo.getTrainId());
+        System.out.println(traininfo.getStation());
         List<Traininfo> trainlist = (List<Traininfo>) this.getHibernateTemplate().find(hql);
         //判断是否有查询结果，换句话说就是判断用户是否存在
         if(trainlist.size()>0){
@@ -63,6 +64,34 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
 
     }
 
+    public String deleteStation(Traininfo traininfo){
+        System.out.println("trainfo==null");
+        System.out.println(traininfo.getTrainId());
+        System.out.println(traininfo.getStation());
+        System.out.println(findStation(traininfo).getTrainId());
+        System.out.println(findStation(traininfo).getStation());
+        Traininfo traininfo1 = findStation(traininfo);
+        if(traininfo1!=null){
+            System.out.println("trainfo!=null");
+            Session session= getSession();
+            session.setFlushMode(FlushMode.AUTO);
+            Transaction tran=session.beginTransaction();
+            try {
+                session.delete(traininfo1);
+                tran.commit();
+            } catch(HibernateException e) {
+                e.printStackTrace();
+                tran.rollback();
+            } finally {
+                session.close();
+            }
+            return "success";
+        }
+        else
+            return "error";
+
+
+    }
 
 
 }

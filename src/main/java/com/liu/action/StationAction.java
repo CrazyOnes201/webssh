@@ -227,19 +227,19 @@ public class StationAction extends ActionSupport {
         }
 
 
-//        else if(operation_type.equals("b"))//删除
-//        {
-//            String result = trainService.deleteTrain(train);
-//            if(result.equals("success"))
-//                return SUCCESS;
-//            else
-//                return ERROR;
-//
-//        }
+        else if(operation_type.equals("b"))//删除
+        {
+            traininfo.setStation(stationlist);
+            if(stationService.deleteStation(traininfo).equals("success"))
+                return SUCCESS;
+            else
+                return ERROR;
+
+        }
 //        else if(operation_type.equals("c"))//修改
-//        {
-//            String result = trainService.updateTrain(train);
-//            if(result.equals("success"))
+//        {o
+//            traininfo.setStation(stationlist);
+//            if(stationService.deleteStation(traininfo).equals("success"))
 //                return SUCCESS;
 //            else
 //                return ERROR;

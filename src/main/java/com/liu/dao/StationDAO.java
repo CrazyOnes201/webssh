@@ -7,4 +7,6 @@ import java.util.ArrayList;
 public interface StationDAO {
     public String addStation(ArrayList<Traininfo> list);
     public Traininfo findStation(Traininfo traininfo);
+    public String deleteStation(Traininfo traininfo);
+
 }

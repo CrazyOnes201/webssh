@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface StationService {
     public String addStation(ArrayList<Traininfo> list);
+    public String deleteStation(Traininfo traininfo);
 
 
 }
