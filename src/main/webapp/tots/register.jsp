@@ -1,30 +1,52 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: liu
-  Date: 2017/12/18
-  Time: 10:01
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Title</title>
-    <script>
-        function jumpToLogin(){
-            document.location.href="login.jsp";
-        }
-    </script>
-</head>
-<body>
-<s:form action="regist" method="POST">
-    <table>
-        <tr><td>用户名<input type="text" name="user.username"></td></tr>
-        <tr><td>密码<input type="password" name="user.password"></td></tr>
-        <tr><td>身份证号<input type="text" name="user.identityNum"></td></tr>
-        <tr><td>电话号码<input type="text" name="user.phone"></td></tr>
-        <tr><td><input type="submit" value="注册"></td><td><input type="button" value="登陆" onclick="jumpToLogin()"></td></tr>
-    </table>
-</s:form>
-</body>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/register-style.css">
+	
+<title>register</title>
+  </head>
+  
+  <body>
+    <div class="register-container">
+	<h1>火车订票系统</h1>
+	
+	<div class="connect">
+		<h2>用户注册</h2>
+	</div>
+	
+	<form action="" method="post" id="registerForm">
+		<div>
+			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" name="realname" class="realname" placeholder="输入真实姓名" autocomplete="off" />
+		</div>
+		<div>
+			<input type="text" name="idnumber" class="idnumber" placeholder="输入二代身份证号" autocomplete="off" />
+		</div>
+		<div>
+			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+		</div>
+		<div>
+			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+		</div>
+
+		<button id="submit" type="submit">注 册</button>
+	</form>
+	<a href="login.jsp"class="register-tis" >
+		 返回登陆
+	</a>
+
+</div>
+  </body>
 </html>

@@ -1,34 +1,64 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-<%--
-  Created by IntelliJ IDEA.
-  User: liu
-  Date: 2017/12/18
-  Time: 10:01
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=GB18030"
+    pageEncoding="GB18030"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <base href="<%=basePath%>">
-    <title>login</title>
-    <script>
-        function jumpToRegist(){
-            document.location.href="register.jsp";
-        }
-    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
+<link href="css/login-style.css" rel="stylesheet" type="text/css" />
+<title>Login</title>
 </head>
-<body>
-<s:form action="login" method="post">
-    <table>
-        <tr><td>鐢ㄦ埛<input type="text" name="user.username"/></td></tr>
-        <tr><td>瀵嗙爜<input type="password" name="user.password"/></td></tr>
-        <tr><td><input type="submit" value="鐧诲綍"/></td><td><input type="button" value="娉ㄥ唽" onclick="jumpToRegist()"/></td></tr>
-    </table>
-</s:form>
+<div class="top">
+  
+</div>
+
+<div class="main">
+  <div class="denglu">
+    <div class="dlk">
+      <s:form action="login" method="post">
+      <table width="292" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="76" colspan="3"style="font-size:24px;text-align:center">用户登陆</td>
+        </tr>
+        <tr>
+          <td width="65" style="font-size:18px">用户名</td>
+          <td colspan="2"><input name="user.username" type="text" class="dlinput" placeholder="用户名/手机号/邮箱登陆" /></td>
+        </tr>
+        <tr>
+          <td height="16" colspan="3"></td>
+        </tr>
+        <tr>
+          <td style="font-size:18px">密码</td>
+          <td colspan="2"><input name="user.password" type="password" class="dlinput" /></td>
+        </tr>
+        <tr>
+          <td height="16" colspan="3"></td>
+        </tr>
+        
+        <tr>
+          <td height="16" colspan="3"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td colspan="2"><input type="submit" value="登 录" class="loginbtn" /></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td colspan="2"><table width="224" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+			</br>
+              <td height="24"><a href="#none" class="mm" >忘记登录密码？</a></td>
+              <td align="right"><a href="/tots/register.jsp" class="zc" style="font-size:13px; color:#225592" >立即网上注册</a></td>
+            </tr>
+            <br>
+          </table></s:form></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Copyright &copy; 2017 xxx.com All Rights Reserved　版权所有 火车订票系统</div>
+
 </body>
 </html>
