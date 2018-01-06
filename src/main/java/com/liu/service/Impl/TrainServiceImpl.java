@@ -46,24 +46,23 @@ public class TrainServiceImpl implements TrainService {
         for(int i = 0; i < listLength; ++i) {
             TrainAndTicket elem = new TrainAndTicket(startTrain.get(i),
                     targetTrain.get(i));
+            if(startTrain.get(i).getRank() == 1) {
+                elem.setStart(true);
+            } else {
+                elem.setStart(false);
+            }
+
+            Train train = trainDao.getTrainById(startTrain.get(i).getTrainId());
+            if(train.getEndStation().equals(targetTrain.get(i).getStation())) {
+                elem.setEnd(true);
+            } else{
+                elem.setEnd(false);
+            }
+
             ArrayList<Ticket> tList = ticketDao.searchTicketInfo(startTrain.get(i).getTrainId(), startTrain.get(i).getRank(),
-                    targetTrain.get(i).getRank());  //tarDate 还有隔天查询
+                    targetTrain.get(i).getRank(), tarDate);  //tarDate 还有隔天查询
             elem.setTicketList(tList);
             resultList.add(elem);
-        }
-
-        for(int i = 0; i < listLength; ++i) {
-            Train train = trainDao.getTrainById(resultList.get(i).getTrainId());
-            if(train.getStartStation().equals(resultList.get(i).getBeginStation())) {
-                resultList.get(i).setStart(true);
-            } else {
-                resultList.get(i).setStart(false);
-            }
-            if(train.getEndStation().equals(resultList.get(i).getTargetStation())) {
-                resultList.get(i).setEnd(true);
-            } else {
-                resultList.get(i).setEnd(false);
-            }
         }
 
         for(TrainAndTicket elem: resultList) {

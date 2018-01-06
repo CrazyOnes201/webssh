@@ -2,11 +2,14 @@ package com.liu.action;
 
 import com.liu.entity.TrainAndTicket;
 import com.liu.service.TrainService;
+import com.liu.util.FormatDate;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -56,31 +59,43 @@ public class SearchTicketAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
-                new Date(), 0);
-        ActionContext act = ActionContext.getContext();
-        /* 缺少检测用户是否登录 */
-        if(userAction.isLogin()) {
-            act.put("isPostResponse", "yes");
-            act.put("tatList", tatList);
-            return SUCCESS;
+        try {
+            ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
+                    FormatDate.jsDateToJava(targetDate), 0);
+            ActionContext act = ActionContext.getContext();
+
+            if (userAction.isLogin()) {
+                act.put("isPostResponse", "yes");
+                act.put("tatList", tatList);
+                return SUCCESS;
+            }
+            return LOGIN;
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        return LOGIN;
+
+        return "fail";
     }
 
     public String advancedSearch() {
-        ArrayList<TrainAndTicket> adtatList = trainService.getTrainList(beginStation, targetStation,
-                new Date(), 1);
-        for(TrainAndTicket tat: adtatList) {
-            System.out.println(tat);
-        }
-        ActionContext act = ActionContext.getContext();
-        if(userAction.isLogin()) {
-            act.put("isPostResponse", "yes");
-            act.put("adtatList", adtatList);
-            return SUCCESS;
+        try {
+            ArrayList<TrainAndTicket> adtatList = trainService.getTrainList(beginStation, targetStation,
+                    FormatDate.jsDateToJava(targetDate), 1);
+            for (TrainAndTicket tat : adtatList) {
+                System.out.println(tat);
+            }
+            ActionContext act = ActionContext.getContext();
+            if (userAction.isLogin()) {
+                act.put("isPostResponse", "yes");
+                act.put("adtatList", adtatList);
+                return SUCCESS;
+            }
+
+            return LOGIN;
+        } catch(Exception e) {
+            e.printStackTrace();
         }
 
-        return LOGIN;
+        return "fail";
     }
 }

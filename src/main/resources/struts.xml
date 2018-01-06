@@ -20,6 +20,7 @@
         <action name="searchticket" class="searchTicketAction">
             <result name="success">/tots/SearchTicket.jsp</result>
             <result name="login">/tots/register.jsp</result>
+            <result name="fail">/tots/SearchTicket.jsp</result>
         </action>
 
         <action name="logout" class="userAction" method="logOut">
@@ -39,6 +40,7 @@
         <action name="advancedsearch" class="searchTicketAction" method="advancedSearch">
             <result name="success">/tots/advancedsearch.jsp</result>
             <result name="login">/tots/login.jsp</result>
+            <result name="fail">/tots/advancedsearch.jsp</result>
         </action>
     </package>
 </struts>

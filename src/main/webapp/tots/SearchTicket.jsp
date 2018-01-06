@@ -72,6 +72,11 @@
                           没有数据 试试<a href="advancedsearch.jsp">高级查询</a>
                       </td>
                   </c:when>
+                  <c:when test="${empty requestScope.tatList[0].ticketList}">
+                      <td colspan="6" style="text-align:center;">
+                          查询日期车票不能购买
+                      </td>
+                  </c:when>
                   <c:when test="${! empty requestScope.tatList}">
                       <c:forEach items="${requestScope.tatList}" var="elemTrain">
                         <tr>

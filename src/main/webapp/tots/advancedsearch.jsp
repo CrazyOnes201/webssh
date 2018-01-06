@@ -80,6 +80,11 @@
                        没有对应车次
                     </td>
                 </c:when>
+                <c:when test="${empty requestScope.adtatList[0].ticketList}">
+                    <td colspan="6" style="text-align:center;font-weight:bold;">
+                        查询日期车票不能购买
+                    </td>
+                </c:when>
                 <c:when test="${! empty requestScope.adtatList}">
                     <c:forEach items="${requestScope.adtatList}" var="elemTrain" varStatus="status">
                         <tr>
