@@ -7,6 +7,7 @@ import com.liu.entity.Train;
 import com.liu.entity.TrainAndTicket;
 import com.liu.entity.Traininfo;
 import com.liu.service.TrainService;
+import com.liu.util.FormatDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,9 +44,10 @@ public class TrainServiceImpl implements TrainService {
         List<Traininfo> targetTrain = infoList.get(1);
         ArrayList<TrainAndTicket> resultList = new ArrayList<TrainAndTicket>();
         int listLength = startTrain.size();
+        String sDate = FormatDate.javaDateToSql(tarDate);
         for(int i = 0; i < listLength; ++i) {
             TrainAndTicket elem = new TrainAndTicket(startTrain.get(i),
-                    targetTrain.get(i));
+                    targetTrain.get(i), sDate);
             if(startTrain.get(i).getRank() == 1) {
                 elem.setStart(true);
             } else {
@@ -60,7 +62,7 @@ public class TrainServiceImpl implements TrainService {
             }
 
             ArrayList<Ticket> tList = ticketDao.searchTicketInfo(startTrain.get(i).getTrainId(), startTrain.get(i).getRank(),
-                    targetTrain.get(i).getRank(), tarDate);  //tarDate 还有隔天查询
+                    targetTrain.get(i).getRank(), tarDate);  //还有隔天查询
             elem.setTicketList(tList);
             resultList.add(elem);
         }

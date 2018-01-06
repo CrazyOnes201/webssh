@@ -40,24 +40,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td width="10%"><div align="center"><strong>同勺</strong></div></td>
 	<td width="15%"><div align="center"><strong>複噫同方</strong></div></td>
   </tr>
-  <%Object obj = request.getAttribute("ticketList");
-    if (obj !=null) {
-    List list = (List)obj; 
-    Iterator itm = list.iterator();
-    TicketBean ticket = null; 
-    while(list!=null && itm.hasNext()) {
-    ticket = (TicketBean)itm.next(); 
+  <%
+//      Object obj = request.getAttribute("ticketList");
+//    if (obj !=null) {
+//    List list = (List)obj;
+//    Iterator itm = list.iterator();
+//    TicketBean ticket = null;
+//    while(list!=null && itm.hasNext()) {
+//    ticket = (TicketBean)itm.next();
   %>
   <tr> 
-    <td width="5%"><input type="radio" name="recordID" value="<%=ticket.getCheci() %>"></td>
-    <td width="10%"><div align="center"><%=ticket.getCheci() %></div></td>
-    <td width="10%"><div align="center"><%=ticket.getQidian() %></div></td>
-    <td width="10%"><div align="center"><%=ticket.getZhongdian() %></div></td>
-	<td width="10%"><div align="center"><%=ticket.getShijian() %></div></td>	
-	<td width="10%"><div align="center"><%=ticket.getPiaojia() %></div></td>
-	<td width="15%"><div align="center"><%=ticket.getShengyu() %></div></td>
+    <td width="5%"><input type="radio" name="recordID" value=""></td>
+    <td width="10%"><div align="center"></div></td>
+    <td width="10%"><div align="center"></div></td>
+    <td width="10%"><div align="center"></div></td>
+	<td width="10%"><div align="center"></div></td>
+	<td width="10%"><div align="center"></div></td>
+	<td width="15%"><div align="center"></div></td>
   </tr>
- <% }} %>
+ <%--<% }} %>--%>
 </table>
 
 <table width="15%" border="1" align="center">

@@ -16,4 +16,5 @@ public interface TrainDAO {
     public List<Traininfo> getTraininfoListByTrainId(String trainId);
     public List<List<Traininfo>> findTransferTrain(String beStation, String tarStation);
     public Traininfo getTraininfoByTrainIdAndStation(String trainId, String station);
+    public List<Traininfo> selectTraininfoListByStation(String trainId, String beStation, String tarStation);
 }

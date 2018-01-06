@@ -16,18 +16,20 @@ public class TrainAndTicket {
     private Time beginTime;
     private Time targetTime;
     private Time lastTime;
+    private String sDate;
     private ArrayList<Ticket> ticketList;
 
     public TrainAndTicket() {
         trainId = "####";
     }
 
-    public TrainAndTicket(Traininfo startInfo, Traininfo targetInfo) {
+    public TrainAndTicket(Traininfo startInfo, Traininfo targetInfo, String sDate) {
         trainId = startInfo.getTrainId();
         beginStation = startInfo.getStation();
         targetStation = targetInfo.getStation();
         beginTime = startInfo.getStartTime();
         targetTime = targetInfo.getStartTime();
+        this.sDate = sDate;
         // 缺少对lastTime的计算
     }
 
@@ -95,6 +97,14 @@ public class TrainAndTicket {
         this.lastTime = lastTime;
     }
 
+    public String getsDate() {
+        return sDate;
+    }
+
+    public void setsDate(String sDate) {
+        this.sDate = sDate;
+    }
+
     public ArrayList<Ticket> getTicketList() {
         return ticketList;
     }
@@ -114,6 +124,7 @@ public class TrainAndTicket {
                 ", beginTime=" + beginTime +
                 ", targetTime=" + targetTime +
                 ", lastTime=" + lastTime +
+                ", sDate='" + sDate + '\'' +
                 ", ticketList=" + ticketList +
                 '}';
     }

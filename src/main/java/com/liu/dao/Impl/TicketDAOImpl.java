@@ -134,7 +134,56 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
         return null;
     }
 
-//    public
+    /**
+     * 根据车票等级、目标日期、购买车票经过的线路站点表购买车票并返回是否购买成功
+     * @param level 车票等级
+     * @param tarDate 目标日期
+     * @param trainList 购买车票需要全部通过的Traininfo表
+     * @return 返回是否购买成功
+     */
+    public Boolean buyOneTicket(String level, Date tarDate, List<Traininfo> trainList) {
+        Boolean isSuccess = true;
+        String baseHql = "from remainticket where level='" + level + "' and date='"
+                + tarDate + "'";
+        Session session = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+        Transaction tran = session.beginTransaction();
+        int length = trainList.size();
+        for(int i = 0; i < length; ++i) {
+            String findHql = baseHql + " and traininfoId='" + trainList.get(i).getId() + "'";
+            List<Remainticket> rtList = (List<Remainticket>)this.getHibernateTemplate().
+                    find(findHql);
+            if(rtList.size() < 1) {
+                tran.rollback();
+                isSuccess = false;
+                break;
+            }
+            Remainticket rtElem = rtList.get(0);
+            if(rtElem.getNowNum() < 1) {
+                tran.rollback();
+                isSuccess = false;
+                break;
+            }
+            rtElem.setNowNum(rtElem.getNowNum() - 1);
+            session.update(rtElem);
+        }
+        tran.commit();
 
+        return isSuccess;
+    }
+
+    /**
+     * 根据level查询Tots_dict中有没有相同value字段，确定车票等级是否合法
+     * @param level 所需查询的车票等级
+     * @return 车票等级是否合法
+     */
+    public boolean isIllegalLevel(String level) {
+        String hql = "from Tots_dict where value='" + level + "'";
+        List<Tots_dict> tdList = (List<Tots_dict>)this.getHibernateTemplate();
+        if(tdList.size() > 0) {
+            return true;
+        }
+
+        return false;
+    }
 
 }

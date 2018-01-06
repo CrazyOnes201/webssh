@@ -196,7 +196,7 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
      * 根据车次的id和站点查询唯一对应的Traininfo类结果
      * @param trainId 需要查询的车次id
      * @param station 需要查询的车次站点
-     * @return 根据条件查询到的唯一Traininfo类结果
+     * @return 根据条件查询到的唯一Traininfo类结果，如果没有则返回null
      */
     public Traininfo getTraininfoByTrainIdAndStation(String trainId, String station) {
         String hql = "from Traininfo where trainId='" + trainId + "' and station='"
@@ -209,5 +209,34 @@ public class TrainDAOImpl extends HibernateDaoSupport implements TrainDAO {
         return null;
     }
 
+    /**
+     * 根据目标车次id 起始站点和目标站点返回相应Traininfo列表
+     * @param trainId 目标车次的id
+     * @param beStation 起始站点
+     * @param tarStation 目标站点
+     * @return 返回目标车次id的起始站点与目标站点间的Traininfo列表并按照rank排序
+     *          如果没有或数据非法则返回 null
+     */
+    public List<Traininfo> selectTraininfoListByStation(String trainId, String beStation, String tarStation) {
+        String beHql = "from Traininfo where trainId='" + trainId + "' and station='"
+                + beStation + "'";
+        String tarHql = "from Traininfo where trainId='" + trainId + "' and station='"
+                + tarStation + "'";
+        List<Traininfo> beList = (List<Traininfo>)this.getHibernateTemplate().find(beHql);
+        List<Traininfo> tarList = (List<Traininfo>)this.getHibernateTemplate().find(tarHql);
+
+        if(beList.size() > 0 && tarList.size() > 0) {
+            Traininfo beTraininfo = beList.get(0);
+            Traininfo tarTraininfo = tarList.get(0);
+            String hql = "from Traininfo where trainId='" + trainId + "' and rank between "
+                    + beTraininfo.getRank() + " and " + tarTraininfo.getRank() + " order by rank";
+            List<Traininfo> result = (List<Traininfo>)this.getHibernateTemplate().find(hql);
+            if(result.size() > 0) {
+                return result;
+            }
+        }
+
+        return null;
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.liu.dao.Impl;
 
 import com.liu.dao.UserDAO;
+import com.liu.entity.Usedticket;
 import com.liu.entity.User;
 import org.hibernate.*;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -68,6 +69,27 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
      */
     public void deleteUser(User user) {
         this.getHibernateTemplate().delete(user);
+    }
+
+    /**
+     * 根据ut插入usedticket表中，返回插入结果
+     * @param ut 用户的已购车票信息
+     * @return 是否添加成功
+     */
+    public boolean buyOneTicketToUser(Usedticket ut) {
+        Session session = getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran=session.beginTransaction();
+        try {
+            session.save(ut);
+            tran.commit();
+            return true;
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        }
+
+        return true;
     }
 
 }
