@@ -27,6 +27,11 @@
             <result name="success">/tots/index.jsp</result>
         </action>
 
+        <action name="updateuser" class="userAction" method="updateUser">
+            <result name="success">/admin/form-amazeui.jsp</result>
+            <result name="error">/admin/form-amazeui.jsp</result>
+        </action>
+
         <action name="admintrain" class="trainAction">
             <result name="success">/form-line.jsp</result>
             <result name="error">/form-line1.jsp</result>

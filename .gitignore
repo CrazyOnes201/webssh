@@ -9,4 +9,3 @@ src/main/webapp/code/
 *.log
 logs/
 temp/
-src/main/java/com/liu/entity/Usedticket.hbm.xml

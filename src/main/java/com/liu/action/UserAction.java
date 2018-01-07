@@ -32,16 +32,20 @@ public class UserAction extends ActionSupport{
         return false;
     }
 
-    public String updateUser(User user){
 
-        
+
+    public String updateUser(User user){
+        ActionContext act = ActionContext.getContext();
+        User loginUser =  (User)act.getSession().get("user");
+        if(userService.findUser(loginUser).getUsername() != null){
+
+        }
+
 
 
 
         return "error";
     }
-
-
 
 
 }
