@@ -38,7 +38,6 @@
         <value>com.liu.entity.Train</value>
         <value>com.liu.entity.Remainticket</value>
         <value>com.liu.entity.Usedticket</value>
-        <value>com.liu.entity.Testtable</value>
         <value>com.liu.entity.TrainSeatType</value>
         <value>com.liu.entity.Tots_dict</value>
       </list>
@@ -55,13 +54,6 @@
     <property name="mappingLocations">
       <list>
         <value>classpath:com/liu/entity/*.hbm.xml</value>
-        <!-- 引入自己定义的hibernate的xml文件 -->
-        <!--<value>com/liu/entity/Remainticket.hbm.xml</value>-->
-        <!--<value>com/liu/entity/Train.hbm.xml</value>-->
-        <!--<value>com/liu/entity/Trainmile.hbm.xml</value>-->
-        <!--<value>com/liu/entity/Trainstation.hbm.xml</value>-->
-        <!--<value>com/liu/entity/Traintime.hbm.xml</value>-->
-        <!--<value>com/liu/entity/Usedticket.hbm.xml</value>-->
       </list>
     </property>
   </bean>
@@ -99,12 +91,6 @@
   </bean>
 
   <bean id="trainDao" class="com.liu.dao.Impl.TrainDAOImpl" scope="singleton">
-    <property name="sessionFactory">
-      <ref bean="sessionFactory" />
-    </property>
-  </bean>
-
-  <bean id="testDao" class="com.liu.dao.Impl.TestDAOImpl" scope="singleton">
     <property name="sessionFactory">
       <ref bean="sessionFactory" />
     </property>
