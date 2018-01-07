@@ -53,11 +53,11 @@ userinfo
                                 <td>${elemTrain.date}</td>
                                 <td>${elemTrain.level}</td>
                                 <td>${elemTrain.money}</td>
-                                <td>
-                                    <c:forEach items="${elemTrain.ticketList}" var="elemTicket">
-                                        ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;
-                                    </c:forEach>
-                                </td>
+                                <%--<td>--%>
+                                    <%--<c:forEach items="${elemTrain.ticketList}" var="elemTicket">--%>
+                                        <%--${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;--%>
+                                    <%--</c:forEach>--%>
+                                <%--</td>--%>
                             </tr>
                         </c:forEach>
                     </c:when>

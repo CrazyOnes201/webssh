@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="/assets/css/admin.css">
-    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/admin/assets/css/app.css">
 </head>
 
 <body data-type="generalComponents">
@@ -25,7 +25,7 @@
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
-                <img src="/assets/img/logo.png" alt="">
+                <img src="/admin/assets/img/logo.png" alt="">
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
@@ -33,7 +33,7 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">管理员</span><span class="tpl-header-list-user-ico"> <img src="/assets/img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">管理员</span><span class="tpl-header-list-user-ico"> <img src="/admin/assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
                         <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
@@ -229,9 +229,9 @@
     </div>
 
 
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/amazeui.min.js"></script>
-    <script src="/assets/js/app.js"></script>
+    <script src="/admin/assets/js/jquery.min.js"></script>
+    <script src="/admin/assets/js/amazeui.min.js"></script>
+    <script src="/admin/assets/js/app.js"></script>
 </body>
 
 </html>

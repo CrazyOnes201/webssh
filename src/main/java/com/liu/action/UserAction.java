@@ -34,6 +34,8 @@ public class UserAction extends ActionSupport{
 
     public String updateUser(User user){
 
+        
+
 
 
         return "error";
