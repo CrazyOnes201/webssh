@@ -89,7 +89,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
             tran.rollback();
         }
 
-        return true;
+        return false;
     }
 
 }

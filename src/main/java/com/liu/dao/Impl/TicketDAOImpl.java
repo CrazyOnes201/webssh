@@ -73,18 +73,17 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
      * @param trainId 车次号
      * @param beRank 起始站号
      * @param tarRank 目的站号
-     * @param tarDate 指定日期
+     * @param tarDate 指定日期(字符串形式)
      * @return 查询车次的车票信息列表（未根据需要对level排序）
      */
-    public ArrayList<Ticket> searchTicketInfo(String trainId, int beRank, int tarRank, Date tarDate) {
-        String tarSqlDate = FormatDate.javaDateToSql(tarDate);
+    public ArrayList<Ticket> searchTicketInfo(String trainId, int beRank, int tarRank, String tarDate) {
         String traininfoHql = "from Traininfo where trainId='" + trainId
                 + "' and rank between " + beRank + " and " + tarRank + " order by rank";
         List<Traininfo> traininfoList = (List<Traininfo>)this.getHibernateTemplate().find(traininfoHql);
         Map resultMap = new HashMap();
         for(int i = 0; i < traininfoList.size(); ++i) {
             String remainticketHql = "from Remainticket where traininfoId='"
-                    + traininfoList.get(i).getId() + "' and date='" + tarSqlDate + "'";
+                    + traininfoList.get(i).getId() + "' and date='" + tarDate + "'";
             List<Remainticket> remainticketList = (List<Remainticket>)this.getHibernateTemplate().
                     find(remainticketHql);
             for(int j = 0; j < remainticketList.size(); ++j) {
@@ -141,9 +140,9 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
      * @param trainList 购买车票需要全部通过的Traininfo表
      * @return 返回是否购买成功
      */
-    public Boolean buyOneTicket(String level, Date tarDate, List<Traininfo> trainList) {
+    public Boolean buyOneTicket(String level, String tarDate, List<Traininfo> trainList) {
         Boolean isSuccess = true;
-        String baseHql = "from remainticket where level='" + level + "' and date='"
+        String baseHql = "from Remainticket where level='" + level + "' and date='"
                 + tarDate + "'";
         Session session = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
         Transaction tran = session.beginTransaction();
@@ -166,7 +165,9 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
             rtElem.setNowNum(rtElem.getNowNum() - 1);
             session.update(rtElem);
         }
-        tran.commit();
+        if(isSuccess) {
+            tran.commit();
+        }
 
         return isSuccess;
     }

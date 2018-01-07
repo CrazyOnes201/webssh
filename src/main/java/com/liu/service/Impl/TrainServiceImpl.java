@@ -62,7 +62,7 @@ public class TrainServiceImpl implements TrainService {
             }
 
             ArrayList<Ticket> tList = ticketDao.searchTicketInfo(startTrain.get(i).getTrainId(), startTrain.get(i).getRank(),
-                    targetTrain.get(i).getRank(), tarDate);  //还有隔天查询
+                    targetTrain.get(i).getRank(), sDate);  //还有隔天查询
             elem.setTicketList(tList);
             resultList.add(elem);
         }

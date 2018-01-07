@@ -17,8 +17,15 @@ public class FormatDate {
     }
 
     public static String javaDateToSql(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String result = sdf.format(date);
+
+        return result;
+    }
+
+    public static String javaDateToJs(String dateString) {
+        String[] elemList = dateString.split("-");
+        String result = elemList[1] + "/" + elemList[2] + "/" + elemList[0];
 
         return result;
     }

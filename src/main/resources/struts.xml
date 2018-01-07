@@ -51,5 +51,16 @@
         <action name="userticket" class="usedTicketAction">
             <result name="success">/tots/userinfo.jsp</result>
         </action>
+
+        <action name="buyticket" class="buyTicketAction">
+            <result name="success">/tots/showticket.jsp</result>
+            <result name="login">/tots/login.jsp</result>
+            <result name="error">/tots/SearchTicket.jsp</result>
+        </action>
+
+        <action name="buyoneticket" class="buyTicketAction" method="buyOneTicket">
+            <result name="success">/tots/personalCenter.jsp</result>
+            <result name="error">/tots/mainPage.jsp</result>
+        </action>
     </package>
 </struts>

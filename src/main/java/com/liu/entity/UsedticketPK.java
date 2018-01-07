@@ -11,8 +11,8 @@ public class UsedticketPK implements Serializable {
     private String trainId;
     private Date date;
 
-    @Column(name = "userId")
     @Id
+    @Column(name = "userId")
     public int getUserId() {
         return userId;
     }
@@ -21,8 +21,8 @@ public class UsedticketPK implements Serializable {
         this.userId = userId;
     }
 
-    @Column(name = "trainId")
     @Id
+    @Column(name = "trainId")
     public String getTrainId() {
         return trainId;
     }
@@ -31,8 +31,8 @@ public class UsedticketPK implements Serializable {
         this.trainId = trainId;
     }
 
-    @Column(name = "date")
     @Id
+    @Column(name = "date")
     public Date getDate() {
         return date;
     }

@@ -66,11 +66,11 @@ public class SearchTicketAction extends ActionSupport {
 
             if (userAction.isLogin()) {
                 act.put("isPostResponse", "yes");
-                act.put("tatList", tatList);
+                act.getSession().put("tatList", tatList);
                 return SUCCESS;
             }
             return LOGIN;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -92,14 +92,10 @@ public class SearchTicketAction extends ActionSupport {
             }
 
             return LOGIN;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return "fail";
     }
-
-
-
-
 }

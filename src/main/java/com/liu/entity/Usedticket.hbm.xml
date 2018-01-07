@@ -1,20 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
 <hibernate-mapping>
-    <composite-id mapped="true" class="com.liu.entity.UsedticketPK">
-        <key-property name="userId" column="userId"/>
-        <key-property name="trainId" column="trainId"/>
-        <key-property name="date" column="date"/>
-    </composite-id>
     <class name="com.liu.entity.Usedticket" table="usedticket" schema="tots">
-        <property name="userId" column="userId"/>
-        <property name="trainId" column="trainId"/>
+        <composite-id mapped="true" class="com.liu.entity.UsedticketPK">
+            <key-property name="userId" column="userId"/>
+            <key-property name="trainId" column="trainId"/>
+            <key-property name="date" column="date"/>
+        </composite-id>
         <property name="startStationId" column="startStationId"/>
         <property name="endStationId" column="endStationId"/>
         <property name="level" column="level"/>
         <property name="money" column="money"/>
-        <property name="date" column="date"/>
     </class>
 </hibernate-mapping>

@@ -1,8 +1,6 @@
 package com.liu.entity;
 
 import javax.persistence.*;
-
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -34,6 +32,16 @@ public class Usedticket {
 
     public void setTrainId(String trainId) {
         this.trainId = trainId;
+    }
+
+    @Id
+    @Column(name = "date")
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Basic
@@ -76,16 +84,6 @@ public class Usedticket {
         this.money = money;
     }
 
-    @Id
-    @Column(name = "date")
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,9 +98,7 @@ public class Usedticket {
             return false;
         if (endStationId != null ? !endStationId.equals(that.endStationId) : that.endStationId != null) return false;
         if (level != null ? !level.equals(that.level) : that.level != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        return date != null ? date.equals(that.date) : that.date == null;
     }
 
     @Override

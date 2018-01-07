@@ -1,5 +1,6 @@
-<%@ page language="java" import="java.util.*,com.bookonline.JavaBean.*" contentType="text/html;charset=gb2312" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <script language="JavaScript" src="js/publicFun.js"></script>
 <%
 String path = request.getContextPath();
@@ -10,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>ÏÔÊ¾Ëù²éÑ¯µÄ»ğ³µÆ±ĞÅÏ¢</title>
+    <title>æ˜¾ç¤ºæ‰€æŸ¥è¯¢çš„ç«è½¦ç¥¨ä¿¡æ¯</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,25 +21,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body background="images/003.jpg">
+  <body background="/tots/images/003.jpg">
+  <br />
 <table width="80%" border="0" align="center">
   <tr>
     <td align="center" bordercolor="#FFFFFF"> 
-      <div align="center"><strong><font size="5">»ğ³µÆ±ĞÅÏ¢¹ÜÀí</font></strong></div></td>
+      <div align="center"><strong><font size="5">è½¦ç¥¨è´­ä¹°</font></strong></div></td>
   </tr>
 </table>
 
 
-<form  name="frmDataList" action="#" method="post">
+<%--<form  name="frmDataList" action="#" method="post">--%>
+<br /><br /><br /><br /><br />
 <table width="80%" border="1" align="center">
   <tr> 
-    <td width="5%"><div align="center"></div></td>
-    <td width="10%"><div align="center"><strong>³µ´Î</strong></div></td>
-    <td width="10%"><div align="center"><strong>Æğµã</strong></div></td>
-    <td width="10%"><div align="center"><strong>ÖÕµã</strong></div></td>
-	<td width="10%"><div align="center"><strong>Ê±¼ä</strong></div></td>
-	<td width="10%"><div align="center"><strong>Æ±¼Û</strong></div></td>
-	<td width="15%"><div align="center"><strong>Ê£ÓàÆ±Êı</strong></div></td>
+
+    <td width="10%"><div align="center"><strong>è½¦æ¬¡</strong></div></td>
+      <td width="10%"><div align="center"><strong>å‡ºå‘æ—¥æœŸ</strong></div></td>
+    <td width="10%"><div align="center"><strong>èµ·ç‚¹</strong></div></td>
+      <td width="10%"><div align="center"><strong>èµ·å§‹æ—¶é—´</strong></div></td>
+    <td width="10%"><div align="center"><strong>ç»ˆç‚¹</strong></div></td>
+	<td width="10%"><div align="center"><strong>åˆ°è¾¾æ—¶é—´</strong></div></td>
+	<td width="10%"><div align="center"><strong>ç¥¨ä»·</strong></div></td>
   </tr>
   <%
 //      Object obj = request.getAttribute("ticketList");
@@ -49,28 +53,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 //    while(list!=null && itm.hasNext()) {
 //    ticket = (TicketBean)itm.next();
   %>
-  <tr> 
-    <td width="5%"><input type="radio" name="recordID" value=""></td>
-    <td width="10%"><div align="center"></div></td>
-    <td width="10%"><div align="center"></div></td>
-    <td width="10%"><div align="center"></div></td>
+  <tr>
+      <td width="10%"><div align="center">${sessionScope.tarTicket.trainId}</div></td>
+      <td width="10%"><div align="center">${sessionScope.tarTicket.sDate}</div></td>
+    <td width="10%"><div align="center">${sessionScope.tarTicket.beginStation}</div></td>
+    <td width="10%"><div align="center">${sessionScope.tarTicket.beginTime}</div></td>
+    <td width="10%"><div align="center">${sessionScope.tarTicket.targetStation}</div></td>
+	<td width="10%"><div align="center">${sessionScope.tarTicket.targetTime}</div></td>
 	<td width="10%"><div align="center"></div></td>
-	<td width="10%"><div align="center"></div></td>
-	<td width="15%"><div align="center"></div></td>
   </tr>
  <%--<% }} %>--%>
 </table>
 
-<table width="15%" border="1" align="center">
-  <tr>
-    <td align="right">
-	    <input name="bookPiao" type="button" id="bookPiao" value="¶©Æ±" onClick="doCheck('book')">
-	    &nbsp; 
-	    <input type="button" name="Submit6" value="·µ»Ø" onClick="doCheck('back')">
-    </td>
-  </tr>
-</table>
+<form action="buyoneticket" method="post">
+    <table width="50%" border="1" align="center">
+        <tr>
+            <th>ç¥¨å‹</th>
+            <th>ä½™ç¥¨</th>
+            <th>é‡‘é¢</th>
+            <th>é€‰æ‹©</th>
+        </tr>
+        <c:forEach items="${sessionScope.tarTicket.ticketList}" var="elemTicket">
+            <tr>
+                <td>${elemTicket.level}</td>
+                <td>${elemTicket.num}</td>
+                <td>${elemTicket.price}</td>
+                <td><input type="radio" name="tarLevel" value="${elemTicket.level}" /></td>
+            </tr>
+        </c:forEach>
+      <tr>
+        <td align="right" colspan="4">
+            <input type="submit" id="bookPiao" value="è®¢ç¥¨" />
+            &nbsp;
+            <input type="button" name="Submit6" value="è¿”å›" onClick="doCheck('back')">
+        </td>
+      </tr>
+    </table>
 </form>
+
 </body>
 </html>
 <script  language="javascript">
@@ -82,10 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         frm.submit();
         return;
       }
-      //---ÒÔÏÂ²Ù×÷£¨±à¼­£¬É¾³ı£¬²é¿´£©ĞèÒªÑ¡ÔñÓÃ»§£¬²ÅÄÜ½øĞĞ²Ù×÷¡£ÒÔÏÂµ÷ÓÃjsº¯ÊıÀ´ÅĞ¶Ï£¬µ¥Ñ¡°´Å¥µÄÃû×Ö±ØĞë¶¨ÒåÎªrecordID
+      //---ä»¥ä¸‹æ“ä½œï¼ˆç¼–è¾‘ï¼Œåˆ é™¤ï¼ŒæŸ¥çœ‹ï¼‰éœ€è¦é€‰æ‹©ç”¨æˆ·ï¼Œæ‰èƒ½è¿›è¡Œæ“ä½œã€‚ä»¥ä¸‹è°ƒç”¨jså‡½æ•°æ¥åˆ¤æ–­ï¼Œå•é€‰æŒ‰é’®çš„åå­—å¿…é¡»å®šä¹‰ä¸ºrecordID
       var sel = getSelectedItem(frm);
       if (sel==null){
-            alert("ÇëÑ¡ÔñÄúÒª¶©µÄÆ±!");
+            alert("è¯·é€‰æ‹©æ‚¨è¦è®¢çš„ç¥¨!");
             return;
       }      
       if (cmd == "book"){         

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface TicketDAO {
     public void insertEveryDayTicket();
-    public ArrayList<Ticket> searchTicketInfo(String stationId, int beRank, int tarRank, Date tarDate);
-    public Boolean buyOneTicket(String level, Date tarDate, List<Traininfo> trainList);
+    public ArrayList<Ticket> searchTicketInfo(String stationId, int beRank, int tarRank, String tarDate);
+    public Boolean buyOneTicket(String level, String tarDate, List<Traininfo> trainList);
     public boolean isIllegalLevel(String level);
 }
