@@ -8,7 +8,8 @@ public interface UserDAO {
     public void saveUser(User user);
 
     public User findUser(User user);
-    public void updateUser(User user);
-    public void deleteUser(User user);
+    public String updateUser(User user);
+    public String deleteUser(User user);
     public boolean buyOneTicketToUser(Usedticket ut);
+
 }

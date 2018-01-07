@@ -25,4 +25,14 @@ public class UserServiceImpl implements UserService {
     public User findUser(User user){
         return userDao.findUser(user);
     }
+
+    //更新用户信息 admin+user
+    public String updateUser(User user){
+        if(userDao.updateUser(user).equals("success"))
+            return "success";
+        else
+            return "error";
+    }
+
+
 }

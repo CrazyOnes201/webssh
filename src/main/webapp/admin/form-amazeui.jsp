@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
@@ -141,11 +142,11 @@
 
 
                         <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal" name="">
+                            <s:form class="am-form am-form-horizontal" action="updateuser">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">用户名 / User Name</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" id="user-name" placeholder="输入用户名 / User Name">
+                                        <input type="text" id="user-name" placeholder="输入用户名 / User Name" name="user.username">
                                         <small></small>
                                     </div>
                                 </div>
@@ -154,7 +155,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">密码 / Password</label>
                                     <div class="am-u-sm-9">
-                                        <input type="email" id="user-email" placeholder="输入密码 / Password">
+                                        <input type="text" id="user-email" placeholder="输入密码 / Password" name="user.password">
                                         <small></small>
                                     </div>
                                 </div>
@@ -163,7 +164,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">身份证 / ID</label>
                                     <div class="am-u-sm-9">
-                                        <input type="email" id="user-email" placeholder="输入身份证 / ID">
+                                        <input type="text" id="user-email" placeholder="输入身份证 / ID" name="user.IdentityNum">
                                         <small></small>
                                     </div>
                                 </div>
@@ -171,9 +172,9 @@
                                 
 
                                 <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">电话号码 / Telephone</label>
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label" >电话号码 / Telephone</label>
                                     <div class="am-u-sm-9">
-                                        <input type="tel" id="user-phone" placeholder="输入电话号码 / Telephone">
+                                        <input type="tel" id="user-phone" placeholder="输入电话号码 / Telephone" name="user.phone">
                                     </div>
                                 </div>
                                
@@ -181,7 +182,7 @@
                                 <div class="am-form-group">
                                     <label for="user-phone" class="am-u-sm-3 am-form-label">类型 <span class="tpl-form-line-small-title">Type</span></label>
                                     <div class="am-u-sm-9">
-                                        <select data-am-selected="{searchBox: 1}">
+                                        <select data-am-selected="{searchBox: 1}" name="operation_type">
 <option value="a">增加</option>
 <option value="b">删除</option>
 <option value="c">修改</option>
@@ -195,10 +196,10 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary">保存</button>
+                                        <button type="submit" class="am-btn am-btn-primary">提交</button>
                                     </div>
                                 </div>
-                            </form>
+                            </s:form>
                             <div class="am-form-group" style="height:140px">
                                 <div class="am-u-sm-9 am-u-sm-push-3">
 

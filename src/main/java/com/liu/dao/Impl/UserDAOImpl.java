@@ -57,8 +57,23 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
      *
      * @param user 更新后的用户数据
      */
-    public void updateUser(User user) {
-        this.getHibernateTemplate().update(user);
+    public String updateUser(User user) {
+        Session session= getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran=session.beginTransaction();
+        try {
+            session.clear();
+            session.update(user);
+            tran.commit();
+            return "success";
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        } finally {
+            session.close();
+        }
+
+        return "error";
 
     }
 
@@ -67,8 +82,21 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
      *
      * @param user 必须为完整用户数据
      */
-    public void deleteUser(User user) {
-        this.getHibernateTemplate().delete(user);
+    public String deleteUser(User user) {
+        Session session= getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran=session.beginTransaction();
+        try {
+            session.delete(user);
+            tran.commit();
+            return "success";
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        } finally {
+            session.close();
+        }
+        return "error";
     }
 
     /**
