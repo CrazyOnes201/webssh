@@ -3,7 +3,11 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
+    <composite-id mapped="true" class="com.liu.entity.UsedticketPK">
+        <key-property name="userId" column="userId"/>
+        <key-property name="trainId" column="trainId"/>
+        <key-property name="date" column="date"/>
+    </composite-id>
     <class name="com.liu.entity.Usedticket" table="usedticket" schema="tots">
         <property name="userId" column="userId"/>
         <property name="trainId" column="trainId"/>

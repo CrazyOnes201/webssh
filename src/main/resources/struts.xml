@@ -42,5 +42,9 @@
             <result name="login">/tots/login.jsp</result>
             <result name="fail">/tots/advancedsearch.jsp</result>
         </action>
+
+        <action name="userticket" class="UsedTicketAction">
+            <result name="success">/tots/userinfo.jsp</result>
+        </action>
     </package>
 </struts>

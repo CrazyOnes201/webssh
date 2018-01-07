@@ -20,11 +20,11 @@ userinfo
             <thead>
             <tr>
                 <th>车次</th>
-                <th>起点</th>
-                <th>终点</th>
-                <th>出发时间</th>
-                <th>到达时间</th>
-                <th>车票</th>
+                <th>始发站</th>
+                <th>终点站</th>
+                <th>发车时间</th>
+                <th>座位</th>
+                <th>票价</th>
             </tr>
             </thead>
             <tbody>
@@ -44,10 +44,11 @@ userinfo
                         <c:forEach items="${requestScope.usedticketList}" var="elemTrain">
                             <tr>
                                 <td>${elemTrain.trainId}</td>
-                                <td>${elemTrain.beginStation}</td>
-                                <td>${elemTrain.targetStation}</td>
-                                <td>${elemTrain.beginTime}</td>
-                                <td>${elemTrain.targetTime}</td>
+                                <td>${elemTrain.startStationId}</td>
+                                <td>${elemTrain.endStationId}</td>
+                                <td>${elemTrain.date}</td>
+                                <td>${elemTrain.level}</td>
+                                <td>${elemTrain.money}</td>
                                 <td>
                                     <c:forEach items="${elemTrain.ticketList}" var="elemTicket">
                                         ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;

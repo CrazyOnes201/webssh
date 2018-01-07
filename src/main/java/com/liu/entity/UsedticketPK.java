@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class UsedticketPK implements Serializable {
     private int userId;

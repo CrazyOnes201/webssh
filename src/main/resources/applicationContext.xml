@@ -128,4 +128,10 @@
     </property>
   </bean>
 
+  <bean id="userticketDao" class="com.liu.dao.Impl.UsedTicketDAOImpl" scope="singleton">
+    <property name="sessionFactory">
+      <ref bean="sessionFactory" />
+    </property>
+  </bean>
+
 </beans>

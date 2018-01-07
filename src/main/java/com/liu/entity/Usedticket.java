@@ -1,12 +1,11 @@
 package com.liu.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
+@IdClass(UsedticketPK.class)
 public class Usedticket {
     private int userId;
     private String trainId;
@@ -14,7 +13,7 @@ public class Usedticket {
     private String endStationId;
     private String level;
     private double money;
-    private Timestamp date;
+    private Date date;
 
     @Id
     @Column(name = "userId")
@@ -78,11 +77,11 @@ public class Usedticket {
 
     @Id
     @Column(name = "date")
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
