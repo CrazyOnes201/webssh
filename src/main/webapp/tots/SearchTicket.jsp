@@ -22,6 +22,7 @@
 </head>
 <body>
 <h2 style="text-align:center;">车票查询</h2>
+<a href="personalCenter.jsp">用户个人中心</a>
 <div class="search">
   <form id="form-msg" class="sui-form form-horizontal"  method="post" action="searchticket">
      <div id="navfirst">

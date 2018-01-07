@@ -17,35 +17,33 @@
 	<div class="connect">
 		<h2>用户注册</h2>
 	</div>
-	
-	<form action="" method="post" id="registerForm">
+
+	<form action="regist" method="post" id="registerForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+			<input type="text" name="user.username" class="realname" placeholder="输入真实姓名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+			<input type="password" name="user.password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<%--<div>--%>
+			<%--<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />--%>
+		<%--</div>--%>
+		<div>
+			<%--<input type="text" name="realname" class="" placeholder="" autocomplete="off" />--%>
 		</div>
 		<div>
-			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+			<input type="text" name="user.identityNum" class="idnumber" placeholder="输入二代身份证号" autocomplete="off" />
 		</div>
 		<div>
-			<input type="text" name="realname" class="realname" placeholder="输入真实姓名" autocomplete="off" />
+			<input type="text" name="user.phone" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
 		</div>
-		<div>
-			<input type="text" name="idnumber" class="idnumber" placeholder="输入二代身份证号" autocomplete="off" />
-		</div>
-		<div>
-			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
-		</div>
-		<div>
-			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
-		</div>
+		<%--<div>--%>
+			<%--<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />--%>
+		<%--</div>--%>
 
 		<button id="submit" type="submit">注 册</button>
 	</form>
-	<a href="login.jsp"class="register-tis" >
-		 返回登陆
-	</a>
+	<a href="login.jsp" type="submit" class="register-tis" >登陆</a>
 
 </div>
   </body>

@@ -237,7 +237,7 @@ public class StationAction extends ActionSupport {
 
         }
 //        else if(operation_type.equals("c"))//修改
-//        {o
+//        {
 //            traininfo.setStation(stationlist);
 //            if(stationService.deleteStation(traininfo).equals("success"))
 //                return SUCCESS;
