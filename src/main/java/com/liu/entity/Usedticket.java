@@ -1,18 +1,20 @@
 package com.liu.entity;
 
-import javax.persistence.*;
-import java.sql.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.sql.Timestamp;
 
 @Entity
-@IdClass(UsedticketPK.class)
 public class Usedticket {
     private int userId;
     private String trainId;
-    private int startStationId;
-    private int endStationId;
-    private int level;
+    private String startStationId;
+    private String endStationId;
+    private String level;
     private double money;
-    private Date date;
+    private Timestamp date;
 
     @Id
     @Column(name = "userId")
@@ -36,31 +38,31 @@ public class Usedticket {
 
     @Basic
     @Column(name = "startStationId")
-    public int getStartStationId() {
+    public String getStartStationId() {
         return startStationId;
     }
 
-    public void setStartStationId(int startStationId) {
+    public void setStartStationId(String startStationId) {
         this.startStationId = startStationId;
     }
 
     @Basic
     @Column(name = "endStationId")
-    public int getEndStationId() {
+    public String getEndStationId() {
         return endStationId;
     }
 
-    public void setEndStationId(int endStationId) {
+    public void setEndStationId(String endStationId) {
         this.endStationId = endStationId;
     }
 
     @Basic
     @Column(name = "level")
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -76,11 +78,11 @@ public class Usedticket {
 
     @Id
     @Column(name = "date")
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
@@ -92,11 +94,12 @@ public class Usedticket {
         Usedticket that = (Usedticket) o;
 
         if (userId != that.userId) return false;
-        if (startStationId != that.startStationId) return false;
-        if (endStationId != that.endStationId) return false;
-        if (level != that.level) return false;
         if (Double.compare(that.money, money) != 0) return false;
         if (trainId != null ? !trainId.equals(that.trainId) : that.trainId != null) return false;
+        if (startStationId != null ? !startStationId.equals(that.startStationId) : that.startStationId != null)
+            return false;
+        if (endStationId != null ? !endStationId.equals(that.endStationId) : that.endStationId != null) return false;
+        if (level != null ? !level.equals(that.level) : that.level != null) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
 
         return true;
@@ -108,9 +111,9 @@ public class Usedticket {
         long temp;
         result = userId;
         result = 31 * result + (trainId != null ? trainId.hashCode() : 0);
-        result = 31 * result + startStationId;
-        result = 31 * result + endStationId;
-        result = 31 * result + level;
+        result = 31 * result + (startStationId != null ? startStationId.hashCode() : 0);
+        result = 31 * result + (endStationId != null ? endStationId.hashCode() : 0);
+        result = 31 * result + (level != null ? level.hashCode() : 0);
         temp = Double.doubleToLongBits(money);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (date != null ? date.hashCode() : 0);

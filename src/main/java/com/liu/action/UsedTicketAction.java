@@ -48,6 +48,7 @@ public class UsedTicketAction extends ActionSupport {
 
             return "fail";
         }
+        return SUCCESS;
     }
 
 }
