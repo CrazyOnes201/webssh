@@ -20,7 +20,7 @@ public class OperateEntity {
         ut.setMoney(t.getPrice());
         try {
             String parseDate = tat.getsDate() + " " + tat.getBeginTime();
-            Date beDate = DateFormat.getDateTimeInstance().parse("2018-02-01 12:41:00");
+            Date beDate = DateFormat.getDateTimeInstance().parse(parseDate);
             ut.setDate(beDate);
         } catch(Exception e) {
             e.printStackTrace();

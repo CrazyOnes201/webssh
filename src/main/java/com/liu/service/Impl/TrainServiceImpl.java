@@ -67,11 +67,6 @@ public class TrainServiceImpl implements TrainService {
             resultList.add(elem);
         }
 
-        for(TrainAndTicket elem: resultList) {
-            System.out.println(elem);
-        }
-        System.out.println(tarDate);
-
         return resultList;
     }
 
@@ -103,12 +98,5 @@ public class TrainServiceImpl implements TrainService {
     public String updateTrain(Train train) {
         return trainDao.updateTrain(train);
     }
-
-    //   public User findUser(User user){
-//        return userDao.findUser(user);
-//    }
-
-
-
 
 }

@@ -23,15 +23,24 @@ public class BuyTicketAction extends ActionSupport {
     @Autowired
     private UserAction userAction;
 
-    String tarLevel;
-    int tarIndex;
+    private String tarLevel1;
+    private String tarLevel2;
+    private int tarIndex;
 
-    public String getTarLevel() {
-        return tarLevel;
+    public String getTarLevel1() {
+        return tarLevel1;
     }
 
-    public void setTarLevel(String tarLevel) {
-        this.tarLevel = tarLevel;
+    public void setTarLevel1(String tarLevel1) {
+        this.tarLevel1 = tarLevel1;
+    }
+
+    public String getTarLevel2() {
+        return tarLevel2;
+    }
+
+    public void setTarLevel2(String tarLevel2) {
+        this.tarLevel2 = tarLevel2;
     }
 
     public int getTarIndex() {
@@ -67,13 +76,13 @@ public class BuyTicketAction extends ActionSupport {
             return LOGIN;
         }
         ActionContext act = ActionContext.getContext();
-        if(act.getSession().get("tarTicket") != null && !OperateString.stringIsEmpty(tarLevel)) {
+        if(act.getSession().get("tarTicket") != null && !OperateString.stringIsEmpty(tarLevel1)) {
             User nowUser = (User)act.getSession().get("user");
             TrainAndTicket tarTicket = (TrainAndTicket)act.getSession().get("tarTicket");
             ArrayList<Ticket> tList = tarTicket.getTicketList();
 
             for(int i = 0; i < tList.size(); ++i) {
-                if(tList.get(i).getLevel().equals(tarLevel)) {
+                if(tList.get(i).getLevel().equals(tarLevel1)) {
                     ArrayList<Ticket> newTList = new ArrayList<Ticket>();
                     newTList.add(tList.get(i));
                     tarTicket.setTicketList(newTList);

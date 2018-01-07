@@ -99,13 +99,24 @@
                                     ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;
                                 </c:forEach>
                             </td>
-                            <td>
-                        </tr>
-                        <c:if test="${status.count%2==0}">
-                            <tr>
-                                <td colspan="6"></td>
-                            </tr>
-                        </c:if>
+                            <c:choose>
+                                <c:when test="${status.count%2==0}">
+                                    <td>
+                                        <button><a href="showadvancedticket?tarIndex=${status.index}">合并预定</a></button>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6">&nbsp;</td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
+
                     </c:forEach>
                 </c:when>
             </c:choose>
