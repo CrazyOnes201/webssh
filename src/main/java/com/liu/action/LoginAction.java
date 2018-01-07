@@ -34,7 +34,7 @@ public class LoginAction extends ActionSupport {
         /* 仅为测试而调用 */
 //        trainService.getTrainList("杭州","北京", new Date());
         /* 仅为测试而调用 */
-        ticketDao.insertEveryDayTicket();
+//        ticketDao.insertEveryDayTicket();
         User nowUser = userService.findUser(user);
         boolean flag = false;
         if(nowUser.getUsername() != null) {
