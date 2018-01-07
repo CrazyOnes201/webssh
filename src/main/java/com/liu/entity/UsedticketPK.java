@@ -3,7 +3,7 @@ package com.liu.entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 public class UsedticketPK implements Serializable {

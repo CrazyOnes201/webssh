@@ -29,24 +29,26 @@ public class UsedTicketAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception{
+        ActionContext act = ActionContext.getContext();
+        User loginUser =  (User)act.getSession().get("user");
 
-        List<Usedticket> list=usedTicketService.findUsedTicket(usedticket.getUserId());
+        List<Usedticket> list=usedTicketService.findUsedTicket(loginUser.getUserId());
         //如果不为空
         if(list.size()>0)
         {
             try {
-                ActionContext act = ActionContext.getContext();
+
                 if (userAction.isLogin()) {
                     act.put("isPostResponse", "yes");
                     act.put("usedticketList", list);
                     return SUCCESS;
                 }
-                return LOGIN;
+
             } catch(Exception e) {
                 e.printStackTrace();
             }
 
-            return "fail";
+
         }
         return SUCCESS;
     }

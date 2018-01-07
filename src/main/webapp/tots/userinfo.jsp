@@ -14,6 +14,10 @@
 <body>
 userinfo
 <a href="SearchTicket.jsp">查询火车票</a>
+<form action="userticket" method="post">
+
+    <input type="submit" value="查询自己的票">
+</form>
 <div class="contain">
     <div class="traintable">
         <table class="sui-table table-primary">
@@ -35,11 +39,11 @@ userinfo
                             没有数据 试试<a href="advancedsearch.jsp">高级查询</a>
                         </td>
                     </c:when>
-                    <c:when test="${empty requestScope.usedticketList[0].ticketList}">
-                        <td colspan="6" style="text-align:center;">
-                            查询日期车票不能购买
-                        </td>
-                    </c:when>
+                    <%--<c:when test="${empty requestScope.usedticketList}">--%>
+                        <%--<td colspan="6" style="text-align:center;">--%>
+                            <%--查询日期车票不能购买--%>
+                        <%--</td>--%>
+                    <%--</c:when>--%>
                     <c:when test="${! empty requestScope.usedticketList}">
                         <c:forEach items="${requestScope.usedticketList}" var="elemTrain">
                             <tr>
