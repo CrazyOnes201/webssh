@@ -3,6 +3,7 @@ package com.liu.dao.Impl;
 import com.liu.dao.DictDAO;
 import com.liu.dao.TicketDAO;
 import com.liu.entity.*;
+import com.liu.util.DateUtil;
 import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,13 +20,17 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
     @Autowired
     DictDAO dictDao;
 
+    private Session getSession() {
+        return this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+    }
+
     /**
-     *  目的通过此函数完成对每日车票的更新
-     *  ##但未完全完成##
+     * 通过此函数完成对目标日期车票的更新
+     * @param tarDate 所需更新的目标日期
      */
-    public void insertEveryDayTicket(Date tarDate) {
+    public void insertDayTicket(Date tarDate) {
         /* 考虑封装 */
-        Session session = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+        Session session = getSession();
         session.setFlushMode(FlushMode.AUTO);
         /* 逻辑开始 */
         Map trainMap = new HashMap();
@@ -45,21 +50,22 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
             String trainseattypeHql = "from TrainSeatType where type='" + seatType + "'";
             List<TrainSeatType> trainSeatTypeResult = (List<TrainSeatType>)this.getHibernateTemplate()
                     .find(trainseattypeHql);
-            for(int j = 0; j < trainSeatTypeResult.size(); ++j) {
-                Remainticket remainElem = new Remainticket();
-                TrainSeatType seatTypeElem = trainSeatTypeResult.get(j);
-                remainElem.setLevel(seatTypeElem.getLevel());
-                remainElem.setNowNum(seatTypeElem.getNum());
-                remainElem.setTraininfoId(elem.getId());
-                remainElem.setDate(tarDate);
-                Transaction tran = session.beginTransaction();
-                try {
+            Transaction tran = session.beginTransaction();
+            try {
+                for(int j = 0; j < trainSeatTypeResult.size(); ++j) {
+                    Remainticket remainElem = new Remainticket();
+                    TrainSeatType seatTypeElem = trainSeatTypeResult.get(j);
+                    remainElem.setLevel(seatTypeElem.getLevel());
+                    remainElem.setNowNum(seatTypeElem.getNum());
+                    remainElem.setTraininfoId(elem.getId());
+                    remainElem.setDate(tarDate);
                     session.save(remainElem);
-                    tran.commit();
-                } catch(HibernateException e) {
-                    e.printStackTrace();
-                    tran.rollback();
+
                 }
+                tran.commit();
+            } catch(HibernateException e) {
+                e.printStackTrace();
+                tran.rollback();
             }
         }
     }
@@ -140,7 +146,7 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
         Boolean isSuccess = true;
         String baseHql = "from Remainticket where level='" + level + "' and date='"
                 + tarDate + "'";
-        Session session = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+        Session session = getSession();
         Transaction tran = session.beginTransaction();
         int length = trainList.size();
         for(int i = 0; i < length; ++i) {
@@ -184,11 +190,48 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
     }
 
     /**
-     *
+     * 检查日期对应的车票是否已经生成
      * @param checkDate 需要检查的日期
      * @return 是否生成票
      */
     public boolean ticketIsCreated(Date checkDate) {
+        String sCheckDate = DateUtil.javaDateToSql(checkDate);
+        String hql = "from Remainticket where date='" + sCheckDate + "'";
+        List<Remainticket> reList = (List<Remainticket>)this.getHibernateTemplate().find(hql);
+        if(reList.size() != 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 根据传入的合法日期边界删除所有非法日期的车票
+     * @param leftLimit 合法日期的左边界
+     * @param rightLimit 合法日期的右边界
+     * @return 是否删除成功
+     */
+    public boolean removeIllegalTicket(Date leftLimit, Date rightLimit) {
+        String sLeftLimit = DateUtil.javaDateToSql(leftLimit);
+        String sRightLimit = DateUtil.javaDateToSql(rightLimit);
+        String illHql = "from Remainticket where date < '" + sLeftLimit + "' or date > '"
+                + sRightLimit + "'";
+        List<Remainticket> illList = (List<Remainticket>)this.getHibernateTemplate().find(illHql);
+        int length = illList.size();
+        Session session = getSession();
+        session.setFlushMode(FlushMode.AUTO);
+        Transaction tran = session.beginTransaction();
+        try {
+            for (int i = 0; i < length; ++i) {
+                session.delete(illList.get(i));
+            }
+            tran.commit();
+            return true;
+        } catch(HibernateException e) {
+            e.printStackTrace();
+            tran.rollback();
+        }
+
         return false;
     }
 

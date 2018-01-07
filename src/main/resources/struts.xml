@@ -62,5 +62,9 @@
             <result name="success">/tots/personalCenter.jsp</result>
             <result name="error">/tots/mainPage.jsp</result>
         </action>
+
+        <action name="refreshticket" class="refreshTicketAction">
+            <result name="success">/admin/form-amazeui.jsp</result>
+        </action>
     </package>
 </struts>

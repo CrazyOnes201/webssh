@@ -98,9 +98,9 @@
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="/tots/login.jsp" class="nav-link tpl-left-nav-link-list">
+                        <a href="refreshticket" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
-                            <span>登录</span>
+                            <span>刷新车票</span>
 
                         </a>
                     </li>

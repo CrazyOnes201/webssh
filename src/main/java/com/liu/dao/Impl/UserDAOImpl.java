@@ -16,7 +16,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
      *
      * @return Session
      */
-    Session getSession() {
+    private Session getSession() {
         return this.getHibernateTemplate().getSessionFactory().getCurrentSession();
     }
     //增加用户

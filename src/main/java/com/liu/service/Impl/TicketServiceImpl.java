@@ -8,6 +8,7 @@ import com.liu.entity.Traininfo;
 import com.liu.entity.Usedticket;
 import com.liu.entity.User;
 import com.liu.service.TicketService;
+import com.liu.util.DateUtil;
 import com.liu.util.OperateEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,29 @@ public class TicketServiceImpl implements TicketService{
         }
 
         return isSuccess;
+    }
+
+    /**
+     * 根据开放售票天数 产生新票并删除非法日期车票
+     * @param dayNum 开放售票天数
+     * @return 返回是否执行成功
+     */
+    public boolean refreshTicket (int dayNum) {
+        try {
+            Date nowDate = DateUtil.getNowDateWithoutTime();
+            for (int i = 0; i < dayNum; ++i) {
+                Date elemDate = DateUtil.getSomeDaysDate(nowDate, i);
+                if (!ticketDao.ticketIsCreated(elemDate)) {
+                    ticketDao.insertDayTicket(elemDate);
+                }
+            }
+            Date rightLimit = DateUtil.getSomeDaysDate(nowDate, dayNum - 1);
+            ticketDao.removeIllegalTicket(nowDate, rightLimit);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

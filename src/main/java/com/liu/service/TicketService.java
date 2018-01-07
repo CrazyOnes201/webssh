@@ -5,4 +5,5 @@ import com.liu.entity.User;
 
 public interface TicketService {
     public boolean buyTicket(TrainAndTicket buytat, User user);
+    public boolean refreshTicket (int dayNum);
 }
