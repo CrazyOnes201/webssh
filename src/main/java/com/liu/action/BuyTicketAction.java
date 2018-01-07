@@ -77,13 +77,14 @@ public class BuyTicketAction extends ActionSupport {
                     ArrayList<Ticket> newTList = new ArrayList<Ticket>();
                     newTList.add(tList.get(i));
                     tarTicket.setTicketList(newTList);
-                    System.out.println("###################################");
                     boolean isSuccess = ticketService.buyTicket(tarTicket, nowUser);
                     if(isSuccess) {
+                        act.getSession().remove("tatList");
                         return SUCCESS;
                     }
                 }
             }
+            act.getSession().remove("tarTicket");
         }
 
         return ERROR;

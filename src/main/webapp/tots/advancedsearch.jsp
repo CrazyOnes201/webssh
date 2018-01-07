@@ -70,6 +70,7 @@
                 <th>出发时间</th>
                 <th>到达时间</th>
                 <th>车票</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
             </tr>
             </thead>
             <tbody>
@@ -98,6 +99,7 @@
                                     ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;
                                 </c:forEach>
                             </td>
+                            <td>
                         </tr>
                         <c:if test="${status.count%2==0}">
                             <tr>
