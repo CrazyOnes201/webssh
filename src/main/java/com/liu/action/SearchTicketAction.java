@@ -2,16 +2,13 @@ package com.liu.action;
 
 import com.liu.entity.TrainAndTicket;
 import com.liu.service.TrainService;
-import com.liu.util.FormatDate;
+import com.liu.util.DateUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Controller
 public class SearchTicketAction extends ActionSupport {
@@ -61,7 +58,7 @@ public class SearchTicketAction extends ActionSupport {
     public String execute() throws Exception {
         try {
             ArrayList<TrainAndTicket> tatList = trainService.getTrainList(beginStation, targetStation,
-                    FormatDate.jsDateToJava(targetDate), 0);
+                    DateUtil.jsDateToJava(targetDate), 0);
             ActionContext act = ActionContext.getContext();
 
             if (userAction.isLogin()) {
@@ -80,10 +77,7 @@ public class SearchTicketAction extends ActionSupport {
     public String advancedSearch() {
         try {
             ArrayList<TrainAndTicket> adtatList = trainService.getTrainList(beginStation, targetStation,
-                    FormatDate.jsDateToJava(targetDate), 1);
-            for (TrainAndTicket tat : adtatList) {
-                System.out.println(tat);
-            }
+                    DateUtil.jsDateToJava(targetDate), 1);
             ActionContext act = ActionContext.getContext();
             if (userAction.isLogin()) {
                 act.put("isPostResponse", "yes");

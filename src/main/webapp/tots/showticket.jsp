@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>${elemTicket.level}</td>
                 <td>${elemTicket.num}</td>
                 <td>${elemTicket.price}</td>
-                <td><input type="radio" name="tarLevel" value="${elemTicket.level}" /></td>
+                <td><input type="radio" name="tarLevel1" value="${elemTicket.level}" /></td>
             </tr>
         </c:forEach>
       <tr>

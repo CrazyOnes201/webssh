@@ -3,7 +3,6 @@ package com.liu.dao.Impl;
 import com.liu.dao.DictDAO;
 import com.liu.dao.TicketDAO;
 import com.liu.entity.*;
-import com.liu.util.FormatDate;
 import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -24,7 +23,7 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
      *  目的通过此函数完成对每日车票的更新
      *  ##但未完全完成##
      */
-    public void insertEveryDayTicket() {
+    public void insertEveryDayTicket(Date tarDate) {
         /* 考虑封装 */
         Session session = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
         session.setFlushMode(FlushMode.AUTO);
@@ -52,10 +51,7 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
                 remainElem.setLevel(seatTypeElem.getLevel());
                 remainElem.setNowNum(seatTypeElem.getNum());
                 remainElem.setTraininfoId(elem.getId());
-                /*
-                * 考虑使用此方法设置日期
-                * remainElem.setDate(tarDate);
-                * */
+                remainElem.setDate(tarDate);
                 Transaction tran = session.beginTransaction();
                 try {
                     session.save(remainElem);
@@ -184,6 +180,15 @@ public class TicketDAOImpl extends HibernateDaoSupport implements TicketDAO {
             return true;
         }
 
+        return false;
+    }
+
+    /**
+     *
+     * @param checkDate 需要检查的日期
+     * @return 是否生成票
+     */
+    public boolean ticketIsCreated(Date checkDate) {
         return false;
     }
 

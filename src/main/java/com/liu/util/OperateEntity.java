@@ -5,6 +5,8 @@ import com.liu.entity.TrainAndTicket;
 import com.liu.entity.Usedticket;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -28,5 +30,31 @@ public class OperateEntity {
         }
 
         return true;
+    }
+
+    public static ArrayList<Ticket> tatSortTicketList(ArrayList<Ticket> tList) {
+        if(tList == null || tList.size() == 0) {
+            return null;
+        }
+
+        int length = tList.size();
+        ArrayList<Ticket> result = new ArrayList<Ticket>();
+        for(int i = 0; i < length - 1; ++i) {
+            int index = -1;
+            double max = -1;
+            for(int j = 0; j < tList.size(); ++j) {
+                if(max < tList.get(j).getPrice() && !tList.get(j).getLevel().equals("无座")) {
+                    max = tList.get(j).getPrice();
+                    index = j;
+                }
+            }
+            result.add(tList.get(index));
+            tList.remove(index);
+        }
+        if(tList.size() != 0) {
+            result.add(tList.get(0));
+        }
+
+        return result;
     }
 }

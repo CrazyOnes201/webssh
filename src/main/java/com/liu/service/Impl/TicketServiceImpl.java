@@ -24,9 +24,13 @@ public class TicketServiceImpl implements TicketService{
     @Autowired
     UserDAO userDao;
 
+    /**
+     * 根据需要购买的车票和购买车票的用户进行一系列验证后返回购买结果
+     * @param buytat 需要购买的目标车票
+     * @param user 购买车票的用户
+     * @return 是否购买成功
+     */
     public boolean buyTicket(TrainAndTicket buytat, User user) {
-        String level = "";  //是否合法
-        Date tarDate = new Date();
         boolean isSuccess = false;
 
         List<Traininfo> tarTraininfoList = trainDao.selectTraininfoListByStation(buytat.getTrainId(),
