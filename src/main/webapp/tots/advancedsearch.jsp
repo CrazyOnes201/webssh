@@ -28,6 +28,20 @@
     <title>Insert title here</title>
 </head>
 <body>
+<div class="Navigation">
+    <div class="left_logo">
+        <img src="images/logo.png" alt="logo" align="left"/>
+        <p class="project_name">
+            火车订票系统</p>
+    </div>
+    <div id="navfirst">
+        <ul id="menu">
+            <li id="s3"><a href="SearchTicket.jsp" title="车票查询">车票查询</a></li>
+            <li id="s1"><a href="userinfo.jsp" title="个人中心">个人中心</a></li>
+            <li id="s2"><a href="login.jsp" title="记账">退出登陆</a></li>
+        </ul>
+    </div>
+</div>
 <h2 style="text-align:center;">高级查询</h2>
 <div class="search">
 
@@ -50,6 +64,15 @@
                     <label for="time" class="control-label">出发日期：</label>
                     <div class="controls">
                         <input type="text" name="targetDate" id="datepicker" />
+                    </div></div></li>
+                <li ><div class="control-group">
+                    排序方式：
+                    <div class="controls">
+                        <select name="advancedFlag">
+                            <option value ="0">最省钱出行</option>
+                            <option value ="1">最节约时间出行</option>
+                            <option value="2">最短路程出行</option>
+                        </select>
                     </div></div></li>
                 <li ><div class="control-group">
                     <label for="time" class="control-label"></label>
@@ -99,24 +122,18 @@
                                     ${elemTicket.level}:${elemTicket.num}&nbsp;&nbsp;
                                 </c:forEach>
                             </td>
-                            <c:choose>
-                                <c:when test="${status.count%2==0}">
-                                    <td>
-                                        <button><a href="showadvancedticket?tarIndex=${status.index}">合并预定</a></button>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6">&nbsp;</td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                    </td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+                        <c:if test="${status.count%2==0}">
 
+                                <td><button><a href="buyticket?tarIndex=${status.index}">预定</a></button></td>
+
+                        </c:if>
+
+                        </tr>
+                        <c:if test="${status.count%2==0}">
+                            <tr>
+                                <td colspan="6"></td>
+                            </tr>
+                        </c:if>
                     </c:forEach>
                 </c:when>
             </c:choose>
@@ -130,11 +147,53 @@
     $('#demo1 input').datepicker({size:"small"});
 </script>
 <style type="text/css">
+    * { padding:0; margin:0;}
+
+    .Navigation{
+        width: 100%;
+        height: 80px;
+        background-color:#4b6cd8;
+        overflow:hidden;
+    }
+    img{
+        width:100px;
+        height:80px;
+    }
+
+    p.project_name{
+        font-style: normal;
+        font-size: 30px;
+        color: #ffffff;
+        float: left;
+        margin-top:30px;
+    }
+
+    #menu {
+        font:50px verdana, arial, sans-serif; /* 设置文字大小和字体样式 */
+        margin-left:400px;
+    }
+
+    #menu, #menu li {
+        list-style:none; /* 将默认的列表符号去掉 */
+    }
+
+    #menu li {
+        float:left;
+    }
+
+    #menu li a {
+        display:block;
+        padding:8px 30px;
+        color:#ffffff;
+        text-decoration:none;
+        margin-top: 0px;
+        font-size: 30px;
+    }
     .search{
         margin:20px 10%;
         width:80%;
         text-align:center;
-        background-color:#e79924;
+        background-color:#cde8f1;
         height:60px;
 
     }
@@ -161,8 +220,8 @@
         margin:20px 10%;
         width:80%;
         text-align:center;
-        background-color:#e79924;
-        height:400px;
+        background-color:#cde8f1;
+        height:600px;
     }
     .traintable{
         width:80%;

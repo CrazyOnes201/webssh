@@ -33,13 +33,13 @@
         </action>
 
         <action name="admintrain" class="trainAction">
-            <result name="success">/form-line.jsp</result>
-            <result name="error">/form-line1.jsp</result>
+            <result name="success">/admin/form-line1.jsp</result>
+            <result name="error">/admin/form-line.jsp</result>
         </action>
 
         <action name="adminstation" class="stationAction">
-            <result name="success">/form-line1.jsp</result>
-            <result name="error">/form-line.jsp</result>
+            <result name="success">/admin/form-amazeui.jsp</result>
+            <result name="error">/admin/form-line1.jsp</result>
         </action>
 
         <action name="advancedsearch" class="searchTicketAction" method="advancedSearch">
@@ -59,7 +59,7 @@
         </action>
 
         <action name="buyoneticket" class="buyTicketAction" method="buyOneTicket">
-            <result name="success">/tots/personalCenter.jsp</result>
+            <result name="success">/tots/userinfo.jsp</result>
             <result name="error">/tots/mainPage.jsp</result>
         </action>
 

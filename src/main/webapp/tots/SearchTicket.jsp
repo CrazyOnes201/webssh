@@ -19,10 +19,26 @@
         });
     </script>
     <title>Insert title here</title>
+
 </head>
 <body>
+
+<div class="Navigation">
+    <div class="left_logo">
+        <img src="images/logo.png" alt="logo" align="left"/>
+        <p class="project_name">
+            火车订票系统</p>
+    </div>
+    <div id="navfirst">
+        <ul id="menu">
+            <li id="s3"><a href="SearchTicket.jsp" title="车票查询">车票查询</a></li>
+            <li id="s1"><a href="userinfo.jsp" title="个人中心">个人中心</a></li>
+            <li id="s2"><a href="login.jsp" title="记账">退出登陆</a></li>
+        </ul>
+    </div>
+</div>
 <h2 style="text-align:center;">车票查询</h2>
-<a href="userinfo.jsp">用户个人中心</a>
+
 <div class="search">
     <form id="form-msg" class="sui-form form-horizontal"  method="post" action="searchticket">
         <div id="navfirst">
@@ -107,6 +123,49 @@
     $('#demo1 input').datepicker({size:"small"});
 </script>
 <style type="text/css">
+    * { padding:0; margin:0;}
+
+    .Navigation{
+        width: 100%;
+        height: 80px;
+        background-color:#4b6cd8;
+        overflow:hidden;
+    }
+    img{
+        width:100px;
+        height:80px;
+    }
+
+    p.project_name{
+        font-style: normal;
+        font-size: 30px;
+        color: #ffffff;
+        float: left;
+        margin-top:30px;
+    }
+
+    #menu {
+        font:50px verdana, arial, sans-serif; /* 设置文字大小和字体样式 */
+        margin-left:400px;
+    }
+
+    #menu, #menu li {
+        list-style:none; /* 将默认的列表符号去掉 */
+    }
+
+    #menu li {
+        float:left;
+    }
+
+    #menu li a {
+        display:block;
+        padding:8px 30px;
+        color:#ffffff;
+        text-decoration:none;
+        margin-top: 0px;
+        font-size: 30px;
+    }
+
     .search{
         margin:20px 10%;
         width:80%;
@@ -139,7 +198,7 @@
         width:80%;
         text-align:center;
         background-color:#eef1f8;
-        height:400px;
+        height:600px;
     }
     .traintable{
         width:80%;

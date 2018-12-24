@@ -8,18 +8,19 @@
 <link href="/tots/css/login-style.css" rel="stylesheet" type="text/css" />
 <title>Login</title>
 </head>
-
+<body>
+<div id="background" style="position:absolute;z-index:-1;width:100%;height:100%;top:0px;left:0px;"><img src="/tots/images/1.jpg" width="100%" height="100%"/></div>
 <div class="main">
   <div class="denglu">
     <div class="dlk">
       <s:form action="login" method="post">
       <table width="292" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td height="76" colspan="3"style="font-size:24px;text-align:center">用户登陆</td>
+          <td height="76" colspan="3"style="font-size:24px;text-align:center;color:black ">用户登陆</td>
         </tr>
         <tr>
           <td width="65" style="font-size:18px">用户名</td>
-          <td colspan="2"><input name="user.username" type="text" class="dlinput" placeholder="用户名/手机号/邮箱登陆" /></td>
+          <td colspan="2"><input name="user.username" type="text" class="dlinput" placeholder="用户/管理员" /></td>
         </tr>
         <tr>
           <td height="16" colspan="3"></td>
@@ -44,8 +45,8 @@
           <td colspan="2"><table width="224" border="0" cellspacing="0" cellpadding="0">
             <tr>
 			</br>
-              <td height="24"><a href="#none" class="mm" style="color: #e1e1e1">忘记登录密码？</a></td>
-              <td align="right"><a href="/tots/register.jsp" class="zc" style="font-size:13px; color:#e1e1e1" >立即网上注册</a></td>
+              <td height="24"><a href="#none" class="mm" style="color: blue">忘记登录密码？</a></td>
+              <td align="right"><a href="/tots/register.jsp" class="zc" style="font-size:13px; color:blue" >立即网上注册</a></td>
             </tr>
             <br>
           </table></s:form></td>
@@ -54,8 +55,5 @@
     </div>
   </div>
 </div>
-
-
-
 </body>
 </html>

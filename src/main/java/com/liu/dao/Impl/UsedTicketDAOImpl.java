@@ -18,7 +18,7 @@ public class UsedTicketDAOImpl extends HibernateDaoSupport implements UsedTicket
     public List<Usedticket> findUsedTicket(int UserId){
         Usedticket usedticket = new Usedticket();
         //HQL查询语句
-        String hql = "from Usedticket where userId='" + UserId + "'";
+        String hql = "from Usedticket where userId=" + UserId;
         List<Usedticket> list = (List<Usedticket>)this.getHibernateTemplate().find(hql);
         return list;
 

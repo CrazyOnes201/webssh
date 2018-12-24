@@ -23,8 +23,9 @@ public class StationDAOImpl extends HibernateDaoSupport implements com.liu.dao.S
         Transaction tran=session.beginTransaction();
         try {
             for (Traininfo traininfo:list){
-                if(findStation(traininfo)==null)
+                if(findStation(traininfo)==null) {
                     session.save(traininfo);
+                }
                 else
                 {
                     tran.rollback();
